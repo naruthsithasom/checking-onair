@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <title>All list</title>
+  <link rel='stylesheet' href='/lottery-theme/lottery-style.css'>
+</head>
+<body>
+  <h1>All list</h1>
+		<% for (var i in alls) { %>
+			<h3>เลขที่ซื้อ: <%= alls[i].number %> - <%= alls[i].major %> ตัว</h3><br>
+			<h3>ราคาซื้อ: <%= alls[i].price%> บาท</h3>
+	<% } %>
+</body>
+</html>

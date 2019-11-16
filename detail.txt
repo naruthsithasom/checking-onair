@@ -1,0 +1,6 @@
+npm install express body-parser ejs mysql bootstarp
+database name = 'lottery'
+login:admin 
+password:1234
+
+

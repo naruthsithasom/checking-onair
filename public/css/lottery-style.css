@@ -3,6 +3,7 @@
   --bg-img-01: url('/img_08.jpg');
   --bg-img-02: url('/img_09.jpg');
 }
+
 main {
   background-image: var(--bg-img-02);
   background-position: center bottom;

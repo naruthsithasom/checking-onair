@@ -1,6 +1,15 @@
+//edit on Macbook 30 November 2019
 npm install express body-parser ejs mysql bootstarp
 database name = 'lottery'
 login:admin 
-password:1234
+password:123
 
+create database lottery
+create table list {
+  id int unique not null auto_increment,
+  member int not null,
+  number varchar(64),
+  major varchar(32),
+  price int not null
+}
 

@@ -4,7 +4,7 @@
   --bg-img-02: url('/img_09.jpg');
 }
 main {
-  background-image: var(--bg-img-01);
+  background-image: var(--bg-img-02);
   background-position: center bottom;
   background-size: cover;
   height: 100vh;

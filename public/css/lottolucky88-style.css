@@ -1,23 +1,26 @@
 :root {
   --bgcolor-01: #000000;
+  --bgcolor-02: #dc9202;
 }
 html{
   font-size: 1.0;
 }
+body{
+  background-color: var(--bgcolor-01);
+}
 head {
   margin-top: 4rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
 
   padding-top: 2rem;
   padding-bottom: 2rem;
-  background-color: #dc9202;
-
+  background-color: var(--bgcolor-02);
+  border: 4mm ridge rgba(170, 54, 2, .6);
   width: 100%;
   height: 400px;
 
+  color: #cccccc;
+
 }
 main {
-  background-color: var(--bgcolor-01);
   width: 100%;
 }

@@ -3,4 +3,6 @@
 }
 main {
   background-color: var(--bgcolor-01);
+  width: 100vh;
+  height: 100%;
 }

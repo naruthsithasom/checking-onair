@@ -1,5 +1,5 @@
 //edit on Macbook 30 November 2019
-npm install express body-parser ejs mysql bootstarp
+npm install express body-parser ejs mysql bootstarp multer
 database name = 'lottery'
 login:admin 
 password:123

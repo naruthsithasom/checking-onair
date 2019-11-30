@@ -3,7 +3,12 @@ var mysql = require('mysql')
 var ejs = require('ejs')
 
 var lottery = express ()
-var source = {host:'localhost', database:'lottery', user:'admin', password:'1234'}
+var source = {
+							host:    'localhost', 
+							database:'lottery', 
+							user:    'admin', 
+							password:'1234'
+					}
 var pool = mysql.createPool(source)
 
 

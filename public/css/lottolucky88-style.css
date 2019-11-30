@@ -10,17 +10,13 @@ body{
 }
 header {
   margin-top: 2rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-
-  padding-top: 2rem;
-  padding-bottom: 2rem;
   background: radial-gradient(circle,
             rgba(228,204,110,1) 0%, 
             rgba(57,42,0,1) 100%);
   border: 1rem solid #fcc201;
+  border-radius: 1.25rem;
   width: 100%;
-
+  height: 170px;
   color: #e2e2e2;
 
 }

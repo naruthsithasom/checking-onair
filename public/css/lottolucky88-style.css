@@ -8,7 +8,7 @@ html{
 body{
   background-color: var(--bgcolor-01);
 }
-head {
+header {
   margin-top: 4rem;
 
   padding-top: 2rem;

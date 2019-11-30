@@ -1,0 +1,6 @@
+:root {
+  --bgcolor-01: #000000;
+}
+main {
+  background-color: var(--bgcolor-01);
+}

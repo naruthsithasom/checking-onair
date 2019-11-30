@@ -20,13 +20,13 @@ lottery.get('/', showIndex)
 lottery.get('/connecting', showConnect)
 lottery.get('/all', showAll)
 lottery.get('/lotto-th', showLottoThai)
-lottery.get('/dashbroad', showDashbroad)
+lottery.get('/dashboad', showDashboad)
 lottery.use(express.static('public'))
 lottery.use(express.static('photo'))
 lottery.use((req, res) =>{ res.status(404).render('error.html')})
 
-function showDashbroad(req, res){
-	res.render('dashbroad.html')
+function showDashboad(req, res){
+	res.render('dashboad.html')
 }
 
 function showLottoThai(req, res){

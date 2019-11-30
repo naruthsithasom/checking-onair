@@ -1,6 +1,11 @@
 :root {
   --bgcolor-01: #000000;
   --bgcolor-02: #dc9202;
+
+  --bgcolor-header: radial-gradient(circle,
+                  rgba(228,204,110,1) 0%, 
+                  rgba(57,42,0,1) 100%);
+
 }
 html{
   font-size: 1.0;
@@ -9,12 +14,10 @@ body{
   background-color: var(--bgcolor-01);
 }
 header {
-  margin-top: rem;
-  background: radial-gradient(circle,
-            rgba(228,204,110,1) 0%, 
-            rgba(57,42,0,1) 100%);
+  margin-top: 0.25rem;
+  background: var(--bgcolor-header);
   border: 0.15rem solid #fcc201;
-  border-radius: 1.25rem;
+  border-radius: 0.65rem;
   width: 100%;
   height: 170px;
   color: #e2e2e2;

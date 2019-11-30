@@ -1,8 +1,10 @@
 :root {
   --bg-01: #cccccc;
+  --bg-img-01: url('/img_08.jpg');
+  --bg-img-02: url('/img_09.jpg');
 }
 main {
-  background-image: url('/img_08.jpg');
+  background-image: var(--bg-img-01);
   background-position: center bottom;
   background-size: cover;
   height: 100vh;

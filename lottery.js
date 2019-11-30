@@ -17,6 +17,7 @@ lottery.engine('html', ejs.renderFile)
 lottery.use('/lottery-theme', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstrap/dist/js'))
 lottery.get('/', showIndex)
+lottery.get(['/home','/lottolucky88'], showHome)
 lottery.get('/connecting', showConnect)
 lottery.get('/all', showAll)
 lottery.get('/lotto-th', showLottoThai)
@@ -24,6 +25,10 @@ lottery.get('/dashboad', showDashboad)
 lottery.use(express.static('public'))
 lottery.use(express.static('photo'))
 lottery.use((req, res) =>{ res.status(404).render('error.html')})
+
+function showHome(req, res){
+	res.render('home.html')
+}
 
 function showDashboad(req, res){
 	res.render('dashboad.html')

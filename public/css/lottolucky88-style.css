@@ -6,6 +6,10 @@
                   rgba(228,204,110,1) 0%, 
                   rgba(57,42,0,1) 100%);
 
+ --bgcolor-main: radial-gradient(circle,
+                  rgba(228,204,110,1) 0%, 
+                  rgba(57,42,0,1) 100%);
+
 }
 html{
   font-size: 1.0;
@@ -25,7 +29,7 @@ header {
 }
 main {
   margin-top: 0.25rem;
-  background: var(--bgcolor-header);
+  background: var(--bgcolor-main);
   border: 0.15rem solid #fcc201;
   border-radius: 0.65rem;
   width: 100%;
@@ -56,3 +60,11 @@ span.lottolucky88-color-02{
 .lottolucky88-btn-forgotpwd:visited{
   color: #e2e2e2;
 } 
+
+.lottolucky88-border-img-right{
+  border: 0.15rem dotted #fcc201;
+  background: #d52100;
+  width: 10rem;
+  height: 2.5rem;
+  color: #e2e2e2;
+}

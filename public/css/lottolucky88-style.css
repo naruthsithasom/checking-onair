@@ -58,7 +58,11 @@ span.lottolucky88-color-02{
   color: #e2e2e2;
 } 
 
-.lottolucky88-border-img-right{
+.lottolucky88-mainside-left{
+  font-size: 3rem;
+  color: #e2e2e2;
+}
+.lottolucky88-mainside-right{
   border: 0.15rem dotted #fcc201;
   background: #d52100;
   width: 22rem;

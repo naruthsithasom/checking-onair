@@ -22,7 +22,7 @@ header {
   background: var(--bgcolor-header);
   border: 0.15rem solid #fcc201;
   border-radius: 0.65rem;
-  width: 90%;
+  width: 99%;
   /* height: 170px; */
   color: #e2e2e2;
 
@@ -32,7 +32,7 @@ main {
   background: var(--bgcolor-main);
   border: 0.15rem solid #fcc201;
   border-radius: 0.65rem;
-  width: 90%;
+  width: 99%;
   height: 100vh;
   min-height: 10rem;
 }

@@ -82,6 +82,8 @@ span.lottolucky88-color-02{
   padding-bottom: 3rem;
 }
 .lottolucky88-hr-content{
-  color: #e2e2e2;
-  width: 80%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid rgba(212, 208, 208, 0.1);
 }

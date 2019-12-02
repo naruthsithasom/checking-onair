@@ -79,4 +79,9 @@ span.lottolucky88-color-02{
 .lottolucky88-wrap-content{
   text-align: center;
   padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.lottolucky88-hr-content{
+  color: #e2e2e2;
+  width: 80%;
 }

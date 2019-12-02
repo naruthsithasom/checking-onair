@@ -87,3 +87,8 @@ span.lottolucky88-color-02{
   border: 0;
   border-top: 2px solid rgba(212, 208, 208, 1.1);
 }
+.lottolucky88-date-content{
+  color:#d52100;
+  text-align: right;
+  padding-right: 2rem;
+}

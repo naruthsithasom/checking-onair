@@ -30,7 +30,7 @@ lottery.use((req, res) =>{ res.status(404).render('error.html')})
 function showListall(req, res){
 	pool.query('select * from lotto_thai', function(error, data){
 		var model = { }
-		model.all = data
+		model.alls = data
 		res.render('home.html', model)
 	})
 }

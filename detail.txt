@@ -24,5 +24,5 @@ create table `member`(
   password   varchar(128) not null,
   name       varchar(128) not null
 );
-insert into `member`(email,password,name)
-  values('admin@lottoluck88', sha2('1234',512), 'Administrator');
+insert into `member` (email,password,name)
+  values ('admin@lottoluck88.com', sha2('1234',512), 'Administrator');

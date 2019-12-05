@@ -51,7 +51,7 @@ function checkPassword(req, res){
 			valid[card] = result[0]
 			res.header('Set-Cookie', 'card='+card+';HttpOnly')
 			//res.redirect('/dashboard')
-			res.send('Login Success')
+			res.send('Login Success')//
 		} else {
 			//res.redirect('/loggin')
 			res.send('Login Fail')

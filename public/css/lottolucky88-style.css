@@ -86,11 +86,12 @@ span.lottolucky88-color-02{
   border-top: 1px solid rgba(212, 208, 208, 1.1);
   width: 70%;
 }
-.lottolucky88-date-content{
+.lottolucky88-date-content, .lottolucky88-numthree{
   color:#990000;
 }
 
 .lottolucky88-wrap-num-01{
   padding-top: 1rem;
   padding-bottom: 1rem;
+  color: #333333;
 }

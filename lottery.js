@@ -37,7 +37,7 @@ function showListall(req, res){
 function showAll(req, res){
 	pool.query('select * from list', function(error ,data){
 		var model = {}
-		model.alls = data
+		model.all = data
 		res.render('all.html', model)
 	})
 }

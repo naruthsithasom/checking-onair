@@ -42,13 +42,14 @@ function showAll(req, res){
 	})
 }
 function checkPassword(req, res){
-	var sql  = 'select * from `member` where email=? and password=sha2(?,512) '
-	var data = [ req.body.email, req.body.password]
+	var sql  = 'select * from `member` where ' +
+				'  email=? and password=sha2(?,512) '
+	var data = [ req.body.email, req.body.password ]
 	pool.query(sql ,data, function(error, result){
 		if(result.length == 1){
 			var card = randomCard()
 			valid[card] = result[0]
-			res.header('Set-Cookie', 'cardd='+card+';HttpOnly')
+			res.header('Set-Cookie', 'card='+card+';HttpOnly')
 			//res.redirect('/dashboard')
 			res.send('Login Success')
 		} else {

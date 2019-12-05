@@ -21,6 +21,7 @@ lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstra
 lottery.get(['/','/home','/lottolucky88'], showListall)
 lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/connecting', showConnect)
+lottery.get('/member', showMember)
 lottery.get('/all', showAll)
 lottery.use(express.static('public'))
 lottery.use(express.static('photo'))
@@ -87,5 +88,9 @@ function showConnect(req, res){
 		res.send(data)
 	})
 }
-
+function showMember(req, res){
+	pool.query('select * from `member`', function(err, data){
+		res.send(data)
+	})
+}
 

@@ -2,7 +2,7 @@ var express = require('express')
 var mysql = require('mysql')
 var ejs = require('ejs')
 
-var lottery = express ()
+var lottery = express()
 var source = {
 							host:    'localhost', 
 							database:'lottolucky88', 
@@ -17,8 +17,8 @@ lottery.listen(81, showStatus)
 lottery.engine('html', ejs.renderFile)
 lottery.use('/lottery-theme', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstrap/dist/js'))
-lottery.get(['/','/home','/lottolucky88'], showHome, showListall)
-lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
+lottery.get(['/','/home','/lottolucky88'], showListall)
+//lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 // lottery.get('/login', showLogin)
 // lottery.post('/login', readBody, checkPassword)
 lottery.get('/connecting', showConnect)

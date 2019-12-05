@@ -82,7 +82,7 @@ function showStatus(){
 }
 
 function showConnect(req, res){
-	pool.query('select * from list', function(error, data){
+	pool.query('select * from lotto_thai', function(error, data){
 		res.send(data)
 	})
 }

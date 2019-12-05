@@ -1,7 +1,8 @@
 var express = require('express')
 var mysql = require('mysql')
 var ejs = require('ejs')
-
+var parser = require('cookie-parser')
+var readCookie = parser()
 var lottery = express()
 var source = {
 							host:    'localhost', 
@@ -40,8 +41,8 @@ function showAll(req, res){
 	})
 }
 function checkPassword(req, res){
-	var sql = 'select * from `member` where ' + 
-	' email=? and password=sha2(?,512) '
+	var sql  = 'select * from `member` where ' +
+	'  email=? and password=sha2(?,512) '
 	var data = [ req.body.email, req.body.password]
 	pool.query(sql ,data, function(error, result){
 		if(result.length == 1){

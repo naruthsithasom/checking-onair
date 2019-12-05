@@ -33,8 +33,8 @@ main {
   border: 0.15rem solid #fcc201;
   border-radius: 0.65rem;
   width: 99%;
-  height: 100vh;
-  min-height: 10rem;
+  /* height: 100vh;
+  min-height: 10rem; */
 }
 
 span.lottolucky88-color-01{

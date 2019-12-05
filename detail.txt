@@ -1,18 +1,11 @@
-//edit on Macbook 30 November 2019
+//edit on Macbook 5 December 2019
 npm install express body-parser ejs mysql bootstarp multer
 database name = 'lottery'
 login:admin 
 password:1234
 
-create database lottery
-create table list (
-  id int unique not null auto_increment,
-  member int not null,
-  number varchar(64),
-  major varchar(32),
-  price int not null
-)
------------------------
+create database lottoluck88;
+
 create table lotto_thai (
   code int unique not null auto_increment,
   lotto_a1 varchar(8) not null,
@@ -24,3 +17,12 @@ create table lotto_thai (
 );
 insert into lotto_thai (lotto_a1, lotto_b1,lotto_b2, lotto_c1, lotto_c2, lotto_d1) values
 ( '453522', '617', '261', '457', '013', '81');
+
+create table `member`(
+  code       int unique not null auto_increment,
+  email      varchar(128) unique not null,
+  password   varchar(128) not null,
+  name       varchar(128) not null
+);
+insert into `member`(email,password,name)
+  values('admin@lottoluck88', sha2('1234',512), 'Administrator');

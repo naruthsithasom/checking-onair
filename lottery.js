@@ -18,9 +18,7 @@ lottery.engine('html', ejs.renderFile)
 lottery.use('/lottery-theme', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstrap/dist/js'))
 lottery.get(['/','/home','/lottolucky88'], showListall)
-//lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
-// lottery.get('/login', showLogin)
-// lottery.post('/login', readBody, checkPassword)
+lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/connecting', showConnect)
 lottery.get('/all', showAll)
 lottery.use(express.static('public'))
@@ -50,9 +48,11 @@ function checkPassword(req, res){
 			var card = randomCard()
 			valid[card] = result[0]
 			res.header('Set-Cookie', 'cardd='+card+';HttpOnly')
-			res.redirect('/dashboard')
+			//res.redirect('/dashboard')
+			res.send('Login Success')
 		} else {
-			res.redirect('/loggin')
+			//res.redirect('/loggin')
+			res.send('Login Fail')
 		}
 	})
 }

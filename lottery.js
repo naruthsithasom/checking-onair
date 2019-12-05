@@ -10,7 +10,8 @@ var source = {
 							password:'1234'
 					}
 var pool = mysql.createPool(source)
-var readBody = express.urlencided({extended:false})
+var readBody = express.urlencoded({extended:false})
+var valid = []
 
 lottery.listen(81, showStatus)
 lottery.engine('html', ejs.renderFile)

@@ -15,12 +15,12 @@ create table list (
 -----------------------
 create table lotto_thai (
   code int unique not null auto_increment,
-  lotto_a1 int not null,
-  lotto_b1 int not null,
-  lotto_b2 int not null,
-  lotto_c1 int not null,
-  lotto_c2 int not null,
-  lotto_d3 int not null
+  lotto_a1 varchar(8) not null,
+  lotto_b1 varchar(8) not null,
+  lotto_b2 varchar(8) not null,
+  lotto_c1 varchar(8) not null,
+  lotto_c2 varchar(8) not null,
+  lotto_d1 varchar(8) not null
 );
-insert into lotto_thai (lotto_a1, lotto_b1,lotto_b2, lotto_c1, lotto_c2, lotto_d3) values
-( 453522, 617, 261, 457, 013, 81);
+insert into lotto_thai (lotto_a1, lotto_b1,lotto_b2, lotto_c1, lotto_c2, lotto_d1) values
+( '453522', '617', '261', '457', '013', '81');

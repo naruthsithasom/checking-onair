@@ -40,10 +40,12 @@
               <p>เลขล่าง 2 ตัว</p>
             </div>
             <div class="lottolucky88-textred">
-              <p>453522</p>
-              <p>617 261</p>
-              <p>457 013</p>
-              <p>81</p>
+              <% for (var i in alls) { %>
+              <p><%= alls[i].lotto_a1 %></p>
+              <p><%= alls[i].lotto_b1%> - <%= alls[i].lotto_b2 %></p>
+              <p><%= alls[i].lotto_c1%> - <%= alls[i].lotto_c2 %></p>
+              <p><%= alls[i].lotto_d1%></p>
+              <% } %>
             </div>
           </div>
         </div>
@@ -117,28 +119,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="lottolucky88-wrap">
-          <img src="/cambodia-flag-round-icon-32.png" class="pb-2">
-          <hr class="lottolucky88-hr-content">
-          <div class="lottolucky88-textwrap">
-            <img src="/crown.png" width="20" height="20" class="mx-1"><b>cambodia lottery</b>
-            <b class="lottolucky88-textred ml-3">4 December 2019</b>
-          </div>
-          <div class="d-flex justify-content-around">
-            <div class="lottolucky88-textgray">
-              <p>A1</p>
-              <p>B2</p>
-              <p>C3</p>
-              <p>D4</p>
-            </div>
-            <div class="lottolucky88-textred">
-              <p>61129</p>
-              <p>87561</p>
-              <p>83001</p>
-              <p>84549</p>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

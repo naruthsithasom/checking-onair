@@ -5,7 +5,7 @@ var ejs = require('ejs')
 var lottery = express ()
 var source = {
 							host:    'localhost', 
-							database:'lottery', 
+							database:'lottolucky88', 
 							user:    'admin', 
 							password:'1234'
 					}

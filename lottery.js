@@ -50,13 +50,10 @@ function checkPassword(req, res){
 			var card = randomCard()
 			valid[card] = result[0]
 			res.header('Set-Cookie', 'card='+card+';HttpOnly')
-			//res.redirect('/dashboard')
-			res.send('Login Success')//
-			console.log('Login success>>:'+result)
+			res.redirect('/pass')
+		
 		} else {
-			//res.redirect('/loggin')
-			res.send('Login Fail')
-			console.log('>>:'+result)
+			res.redirect('/loggin')
 		}
 	})
 }

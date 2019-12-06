@@ -21,12 +21,17 @@ lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstra
 lottery.get(['/','/home','/lottolucky88'], showListall)
 lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/pass', readCookie, showPass)
+lottery.get('/', showLogin)
 
 lottery.get('/connecting', showConnect)
 lottery.get('/member', showMember)
 lottery.use(express.static('public'))
 lottery.use(express.static('photo'))
 lottery.use((req, res) =>{ res.status(404).render('error.html')})
+
+function showLogin(req, res){
+	res.render('login.html')
+}
 
 function showPass(req, res){
 	var card = null 

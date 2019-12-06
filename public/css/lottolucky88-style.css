@@ -59,10 +59,10 @@ span.lottolucky88-color-02{
   color: #b39319;
 }
  
-.lottolucky88-register a:hover{
+a.lottolucky88-register:hover{
   text-decoration: none;
 }
-.lottolucky88-register a:visited{
+a.lottolucky88-register:visited{
   color: #e2e2e2;
 } 
 

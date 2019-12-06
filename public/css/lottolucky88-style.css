@@ -102,9 +102,9 @@ a.lottolucky88-register:visited{
 }
 
 .lottolucky88-wrap-login{
-  margin: auto;
   padding: 2rem;
-  height: 100vh;
-  background-color: #e2e2e2;
-  border-radius: 8px;
+  height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

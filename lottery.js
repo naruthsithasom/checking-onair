@@ -20,12 +20,27 @@ lottery.use('/lottery-theme', express.static(__dirname + '/node_modules/bootstra
 lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstrap/dist/js'))
 lottery.get(['/','/home','/lottolucky88'], showListall)
 lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
+lottery.get('/pass', readCookie, showPass)
+
 lottery.get('/connecting', showConnect)
 lottery.get('/member', showMember)
-lottery.get('/all', showAll)
 lottery.use(express.static('public'))
 lottery.use(express.static('photo'))
 lottery.use((req, res) =>{ res.status(404).render('error.html')})
+
+function showPass(req, res){
+	var card = null 
+	if(req.cookies != null){
+		card = req.cookies.card
+	}
+	if(valid[card]){
+		var model = { }
+		model.user = valid[card]
+		res.render('pass.html', model)
+	} else {
+		res.redirect('/login')
+	}
+}
 
 function showListall(req, res){
 	pool.query('select * from lotto_thai', function(error, data){
@@ -34,13 +49,7 @@ function showListall(req, res){
 		res.render('home.html', model)
 	})
 }
-function showAll(req, res){
-	pool.query('select * from list', function(error ,data){
-		var model = {}
-		model.all = data
-		res.render('all.html', model)
-	})
-}
+
 function checkPassword(req, res){
 	var sql  = 'select * from member where ' +
 				'  email=? and password=sha2(?,512) '
@@ -58,7 +67,7 @@ function checkPassword(req, res){
 	})
 }
 
-function randomCard(){
+function randomCard(){ //create for id cookie
 	var a = [ ]
 	for (var i = 0; i < 8; i++){
 		var r = parseInt(Math.random() * 10000 )

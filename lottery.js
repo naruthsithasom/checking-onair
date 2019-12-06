@@ -53,7 +53,7 @@ function checkPassword(req, res){
 			res.redirect('/pass')
 		
 		} else {
-			res.redirect('/loggin')
+			res.redirect('/')
 		}
 	})
 }

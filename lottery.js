@@ -55,6 +55,7 @@ function checkPassword(req, res){
 		} else {
 			//res.redirect('/loggin')
 			res.send('Login Fail')
+			console.log('>>Login:'+result)
 		}
 	})
 }

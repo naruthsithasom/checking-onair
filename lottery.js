@@ -21,7 +21,7 @@ lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstra
 lottery.get(['/','/home','/lottolucky88'], showListall)
 lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/pass', readCookie, showPass)
-lottery.get('/', showLogin)
+lottery.get('/login', showLogin)
 
 lottery.get('/connecting', showConnect)
 lottery.get('/member', showMember)

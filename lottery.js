@@ -71,7 +71,8 @@ function checkPassword(req, res){
 			res.redirect('/pass')
 		
 		} else {
-			res.redirect('/')
+			//res.redirect('/')
+			res.render('fail.html')
 		}
 	})
 }

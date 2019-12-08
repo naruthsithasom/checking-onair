@@ -2,20 +2,14 @@
 <main>
   <div class="container">
     <div class="lottolucky88-cover">
-      <h1>Sign Up</h1>
-      <br>
-      <form class="form-inline">
-        <div class="form-group">
-          <label>Eamil</label>
-          <input name="email" placeholder="Your Email">
-          <br>
-          <label for="inputPassword6">Password</label>
-          <input name="password" type="password" id="inputPassword6" class="form-control mx-sm-3"
-            aria-describedby="passwordHelpInline">
-          <small id="passwordHelpInline" class="text-muted">
-            Must be 8-20 characters long.
-          </small>
-        </div>
+      <form class="form-signin" method="post" action="/register">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+        <label for="inputEmail" class="sr-only" name="email">Email</label>
+        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Your email" required=""
+          autofocus="">
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Your password"
+          required="">
+        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Sign in</button>
       </form>
     </div>
   </div>

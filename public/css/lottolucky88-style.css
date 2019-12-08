@@ -19,6 +19,7 @@ body{
 }
 header {
   margin-top: 0.25rem;
+  margin-left:0.25rem;
   background: var(--bgcolor-header);
   border: 0.15rem solid #fcc201;
   border-radius: 0.65rem;
@@ -51,7 +52,7 @@ span.lottolucky88-color-02{
   background: #b39319;
   color: #e2e2e2;
 }
-.lottolucky88-register{
+.lottolucky88-register, .lottolucky88-btn-login{
   padding: 0.45rem;
   margin: 0rem 0.5rem;
   border-radius: 8px;
@@ -107,4 +108,15 @@ a.lottolucky88-register:visited{
   height: 100vh; 
   align-items: center;
   justify-content: center;
+}
+
+.lottolucky88-wrap-login{
+  text-align: center;
+  height: 100vh;
+}
+.lottolucky88-form-signin{
+  width: 99%;
+  max-width: 350px;
+  padding: 15px;
+  margin: 0 auto; 
 }

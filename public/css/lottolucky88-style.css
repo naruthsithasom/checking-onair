@@ -19,7 +19,6 @@ body{
 }
 header {
   margin-top: 0.25rem;
-  margin-left:0.25rem;
   background: var(--bgcolor-header);
   border: 0.15rem solid #fcc201;
   border-radius: 0.65rem;
@@ -46,7 +45,7 @@ span.lottolucky88-color-02{
 }
 .lottolucky88-wrap-header{
   display:flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .lottolucky88-btn-login{
   background: #b39319;

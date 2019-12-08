@@ -14,12 +14,12 @@
 </header>
 <main>
   <div class="container">
-    <div class="lottolucky88-cover">
-      <div class="d-flex flex-column bd-highlight mb-3">
+    <div class="lottolucky88-wrap-login">
+      <!-- <div class="d-flex flex-column bd-highlight mb-3">
         <div class="p-2 bd-highlight">
           <h2>LOTTO <span class="lottolucky88-color-01"> LUCKY </span>
             <span class="lottolucky88-color-02">88</span></h2>
-        </div>
+        </div> 
         <div class="p-2 bd-highlight">
           <form method="post" action="/">
             <input name="email" class="my-1" placeholder="Your email"><br>
@@ -30,7 +30,21 @@
             <a href="#" class="badge badge-light my-1">Forgot password</a>
           </form>
         </div>
-      </div>
+      </div> -->
+      <form method="post" action="/" class="lottolucky88-wrap-login">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-block lottolucky88-btn-login" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">LOTTOLUCKY88 &copy; 2019-2020</p>
+      </form>
     </div>
   </div>
 </main>

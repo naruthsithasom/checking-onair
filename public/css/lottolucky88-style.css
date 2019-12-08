@@ -52,7 +52,7 @@ span.lottolucky88-color-02{
   color: #e2e2e2;
 } */
 .lottolucky88-register, .lottolucky88-btn-login{
-  padding: 0.45rem;
+  padding: 0.45rem 1rem 0.45rem 0.45rem;
   margin: 0rem 0.5rem;
   border-radius: 8px;
   background-color: #e2e2e2;

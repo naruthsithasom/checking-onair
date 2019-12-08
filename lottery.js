@@ -16,8 +16,8 @@ var valid = []
 
 lottery.listen(81, showStatus)
 lottery.engine('html', ejs.renderFile)
-lottery.use('/lottery-theme', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
-lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstrap/dist/js'))
+//lottery.use('/lottery-theme', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
+//lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstrap/dist/js'))
 lottery.get(['/','/home','/lottolucky88'], showListall)
 lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/pass', readCookie, showPass)

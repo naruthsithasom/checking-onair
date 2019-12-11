@@ -52,12 +52,19 @@ span.lottolucky88-color-02{
   color: #e2e2e2;
 } */
 .lottolucky88-register, .lottolucky88-btn-login{
-  margin: 1rem 0;
+  margin: 1rem 0.5;
   border-radius: 8px;
   background-color: #e2e2e2;
   color: #b39319 !important;
   font-size: 1rem;
 } 
+.lottolucky88-btn-signin{
+  margin: 1rem 0;
+  border-radius: 8px;
+  background-color: #e2e2e2;
+  color: #b39319 !important;
+  font-size: 1rem;
+}
 a.lottolucky88-register:hover{
   text-decoration: none;
 }

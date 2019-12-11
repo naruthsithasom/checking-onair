@@ -119,7 +119,7 @@ a.lottolucky88-register:visited{
   text-align: center;
   height: 100vh;
 }
-.lottolucky88-form-signin{
+.lottolucky88-form-login, .lottolucky88-form-register{
   width: 99%;
   max-width: 350px;
   padding: 15px;

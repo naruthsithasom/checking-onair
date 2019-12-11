@@ -1,15 +1,30 @@
 <% include header.html %>
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 pt-1">
+        <h2>LOTTO <span class="lottolucky88-color-01"> LUCKY </span><span class="lottolucky88-color-02">88</span></h2>
+      </div>
+      <div class="col-lg-8 pt-1"></div>
+    </div>
+  </div>
+  </div>
+</header>
 <main>
   <div class="container">
     <div class="lottolucky88-cover">
-      <form class="form-signin" method="post" action="/register">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
-        <label for="inputEmail" class="sr-only" name="email">Email</label>
-        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Your email" required=""
-          autofocus="">
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Your password"
-          required="">
-        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Sign in</button>
+      <form method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Email</h1>
+        <input name="email" class="form-control mb-2" placeholder="Your email" required autofocus>
+        <h1 class="h3 mb-3 font-weight-normal">Password</h1>
+        <input name="password" type="password" class="form-control" placeholder="Your password" required>
+        <h1 class="h3 mb-3 font-weight-normal">Phone</h1>
+        <input name="phone" class="form-control mb-2" placeholder="Your phone" required autofocus>
+        <button class="btn btn-lg btn-block lottolucky88-btn-signin" type="submit">Sign Up</button>
+        <div class="mt-5 mb-3 text-center">
+          <b>LOTTO <span class="lottolucky88-color-01"> LUCKY </span><span class="lottolucky88-color-02">88</span>
+            &copy; 2019-2020</b>
+        </div>
       </form>
     </div>
   </div>

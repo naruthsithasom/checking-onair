@@ -25,11 +25,16 @@ lottery.get('/login', showLogin)
 lottery.get('/fail', showFail)
 lottery.get('/forgot', showFotgot)
 lottery.get('/register', showRegister)
+lottery.post('/register', readBody, saveNewMember)
 lottery.get('/connecting', showConnect)
 lottery.get('/member', showMember)
 lottery.use(express.static('public'))
 lottery.use(express.static('photo'))
 lottery.use((req, res) =>{ res.status(404).render('error.html')})
+
+function saveNewMember(req, res){
+	
+}
 
 function showRegister(req, res){
 	res.render('register.html')

@@ -39,11 +39,11 @@ function saveNewMember(req, res){
 	pool.query(sql, data, function(error, result){
 		var model = { }
 		if(error == null){
-			model.message = 'Register Success...'
+			//model.message = 'Register Success...'
+			res.render('register-result.html', model)
 		} else {
 			model.message = 'Fail to register...'
 		}
-		res.render('register-result.html', model)
 	})
 }
 

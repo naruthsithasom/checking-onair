@@ -33,7 +33,18 @@ lottery.use(express.static('photo'))
 lottery.use((req, res) =>{ res.status(404).render('error.html')})
 
 function saveNewMember(req, res){
-	
+	var sql = 'insert into `member`(email, password, name)' +
+						' values(?, sha2(?, 512), ?)'
+	var data = [req.body.email, req.body.password]
+	pool.query(sql, data, function(error, result){
+		var model = { }
+		if(error == null){
+			model.message = 'Register Success...'
+		} else {
+			model.message = 'Fail to register...'
+		}
+		res.render('register-result.html', model)
+	})
 }
 
 function showRegister(req, res){

@@ -35,7 +35,7 @@ lottery.use((req, res) =>{ res.status(404).render('error.html')})
 function saveNewMember(req, res){
 	var sql = 'insert into `member`(email, password, name)' +
 						' values(?, sha2(?, 512), ?)'
-	var data = [req.body.email, req.body.password]
+	var data = [req.body.email, req.body.password, req.body.name]
 	pool.query(sql, data, function(error, result){
 		var model = { }
 		if(error == null){

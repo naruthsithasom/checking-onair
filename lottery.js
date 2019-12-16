@@ -106,7 +106,7 @@ function checkPassword(req, res){
 			var card = randomCard()
 			valid[card] = result[0]
 			res.header('Set-Cookie', 'card='+card+';HttpOnly')
-			res.redirect('/welome')
+			res.redirect('/welcome')
 		
 		} else {
 			//res.redirect('/')

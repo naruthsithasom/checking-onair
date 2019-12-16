@@ -20,7 +20,7 @@ lottery.engine('html', ejs.renderFile)
 lottery.get(['/','/home','/lottolucky88'], showListall)
 //lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/login', showLogin)
-lottery.post('/login', readCookie, checkPassword)
+lottery.post('/login', readBody, checkPassword)
 lottery.get('/pass', readCookie, showPass)
 lottery.get('/fail', showFail)
 lottery.get('/forgot', showFotgot)
@@ -86,7 +86,7 @@ function showPass(req, res){
 		model.user = valid[card]
 		res.render('pass.html', model)
 	} else {
-		res.redirect('/login')
+		res.redirect('/')
 	}
 }
 

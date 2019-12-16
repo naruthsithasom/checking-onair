@@ -48,7 +48,7 @@ span.lottolucky88-color-02{
   justify-content: flex-end;
 }
  
-.lottolucky88-link-register, .lottolucky88-link-login{
+.lottolucky88-linkRegister, .lottolucky88-linkLogin{
 
   margin: 1rem 0.2rem;
   padding: 0.45rem .5rem 0.45rem 0.45rem;
@@ -56,6 +56,12 @@ span.lottolucky88-color-02{
   background-color: #e2e2e2;
   color: #b39319 !important;
   font-size: 1rem;
+} 
+a.lottolucky88-linkRegister.lottolucky88-linkLogin:hover{
+  text-decoration: none;
+}
+a.lottolucky88-linkRegister:visited{
+  color: #b39319;
 } 
 .lottolucky88-btn-signin, .lottolucky88-btn-signup{
 
@@ -65,12 +71,7 @@ span.lottolucky88-color-02{
   color: #b39319 !important;
   font-size: 1rem;
 }
-a.lottolucky88-register:hover{
-  text-decoration: none;
-}
-a.lottolucky88-register:visited{
-  color: #b39319;
-} 
+
 
 .lottolucky88-mainside-left{
   font-size: 2.8rem;

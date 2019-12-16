@@ -18,10 +18,10 @@ lottery.listen(81, showStatus)
 lottery.engine('html', ejs.renderFile)
 
 lottery.get(['/','/home','/lottolucky88'], showListall)
-lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
-lottery.get('/pass', readCookie, showPass)
-lottery.get('/welcome', readCookie, showWelcome)
+//lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/login', showLogin)
+lottery.post('/login', readCookie, checkPassword)
+lottery.get('/pass', readCookie, showPass)
 lottery.get('/fail', showFail)
 lottery.get('/forgot', showFotgot)
 lottery.get('/register', showRegister)
@@ -106,7 +106,7 @@ function checkPassword(req, res){
 			var card = randomCard()
 			valid[card] = result[0]
 			res.header('Set-Cookie', 'card='+card+';HttpOnly')
-			res.redirect('/pass')
+			res.redirect('/welome')
 		
 		} else {
 			//res.redirect('/')

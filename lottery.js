@@ -6,6 +6,7 @@ var readCookie = parser()
 var lottery = express()
 var source = {
 							host:    'localhost', 
+							// host:'35.238.35.133 ',
 							database:'lottolucky88', 
 							user:    'admin', 
 							password:'1234'
@@ -39,11 +40,11 @@ function saveNewMember(req, res){
 	pool.query(sql, data, function(error, result){
 		var model = { }
 		if(error == null){
-			//model.message = 'Register Success...'
-			res.render('register-result.html', model)
+			model.message = 'Register Success...'
 		} else {
 			model.message = 'Fail to register...'
 		}
+		res.render('register-result.html', model)
 	})
 }
 
@@ -57,10 +58,6 @@ function showFotgot(req, res){
 
 function showFail(req, res){
 	res.render('fail.html')
-}
-
-function showLogin(req, res){
-	res.render('login.html')
 }
 
 function showPass(req, res){

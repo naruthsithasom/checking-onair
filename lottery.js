@@ -40,12 +40,11 @@ function saveNewMember(req, res){
 		//model.message = 'Test'
 		if(error == null){
 			model.message = 'Register Success...'
-			res.render('register-result.html', model)
 		} else {
 			model.message = 'Fail to register...'
 		}
 		console.log('mode: ', model)
-		// res.render('register-result.html', model)
+		res.render('register-result.html', model)
 	})
 }
 

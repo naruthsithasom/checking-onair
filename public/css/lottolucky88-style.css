@@ -57,13 +57,16 @@ span.lottolucky88-color-02{
   color: #b39319 !important;
   font-size: 1rem;
 } 
-a.lottolucky88-linkRegister, a.lottolucky88-linkLogin:hover{
+a.lottolucky88-linkRegister, 
+a.lottolucky88-linkLogin:hover{
   text-decoration: none;
 }
-a.lottolucky88-linkRegister, a.lottolucky88-linkLogin:visited{
+a.lottolucky88-linkRegister, 
+a.lottolucky88-linkLogin:visited{
   color: #b39319;
 } 
-.lottolucky88-btn-signin, .lottolucky88-btn-signup{
+.lottolucky88-btn-signin, 
+.lottolucky88-btn-signup{
 
   margin: 1rem 0;
   border-radius: 8px;

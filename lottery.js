@@ -18,7 +18,6 @@ lottery.listen(81, showStatus)
 lottery.engine('html', ejs.renderFile)
 
 lottery.get(['/','/home','/lottolucky88'], showListall)
-//lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/login', showLogin)
 lottery.post('/login', readBody, checkPassword)
 lottery.get('/welcome', readCookie, showWelcome)

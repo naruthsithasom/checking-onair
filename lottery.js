@@ -6,7 +6,6 @@ var readCookie = parser()
 var lottery = express()
 var source = {
 							host:    'localhost', 
-							// host:'35.238.35.133 ',
 							database:'lottolucky88', 
 							user:    'admin', 
 							password:'1234'

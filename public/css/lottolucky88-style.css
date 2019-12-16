@@ -57,7 +57,7 @@ span.lottolucky88-color-02{
   color: #b39319 !important;
   font-size: 1rem;
 } 
-a.lottolucky88-linkRegister.lottolucky88-linkLogin:hover{
+a.lottolucky88-linkRegister, a.lottolucky88-linkLogin:hover{
   text-decoration: none;
 }
 a.lottolucky88-linkRegister:visited{

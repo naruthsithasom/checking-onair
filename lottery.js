@@ -44,7 +44,7 @@ function saveNewMember(req, res){
 			model.message = 'Fail to register...'
 		}
 		console.log('mode: ', model)
-		res.render('register-result.html', model)
+		res.render('test.html', model)
 	})
 }
 

@@ -16,8 +16,7 @@ var valid = []
 
 lottery.listen(81, showStatus)
 lottery.engine('html', ejs.renderFile)
-//lottery.use('/lottery-theme', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
-//lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstrap/dist/js'))
+
 lottery.get(['/','/home','/lottolucky88'], showListall)
 lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/pass', readCookie, showPass)
@@ -40,7 +39,7 @@ function saveNewMember(req, res){
 		var model = { }
 		//model.message = 'Test'
 		if(error == null){
-			//model.message = 'Register Success...'
+			model.message = 'Register Success...'
 			res.render('register-result.html', model)
 		} else {
 			model.message = 'Fail to register...'
@@ -114,10 +113,6 @@ function randomCard(){ //create for id cookie
 
 function showLogin(req, res){
 	res.render('login.html')
-}
-
-function showHome(req, res){
-	res.render('home.html')
 }
 
 function showStatus(){

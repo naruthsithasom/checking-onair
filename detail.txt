@@ -26,3 +26,9 @@ create table `member`(
 );
 insert into `member` (email,password,name)
   values ('admin@lottoluck88.com', sha2('1234',512), 'Administrator');
+
+
+
+  
+//lottery.use('/lottery-theme', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
+//lottery.use('/lottery-js',    express.static(__dirname + '/node_modules/bootstrap/dist/js'))

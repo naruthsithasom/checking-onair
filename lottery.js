@@ -20,6 +20,7 @@ lottery.engine('html', ejs.renderFile)
 lottery.get(['/','/home','/lottolucky88'], showListall)
 lottery.post(['/','/home','lottolucky88'], readBody, checkPassword)
 lottery.get('/pass', readCookie, showPass)
+lottery.get('/welcome', readCookie, showWelcome)
 lottery.get('/login', showLogin)
 lottery.get('/fail', showFail)
 lottery.get('/forgot', showFotgot)
@@ -30,6 +31,21 @@ lottery.get('/member', showMember)
 lottery.use(express.static('public'))
 lottery.use(express.static('photo'))
 lottery.use((req, res) =>{ res.status(404).render('error.html')})
+
+
+function showWelcome(req, res){
+	var card = null 
+	if(req.cookies != null){
+		card = req.cookies.card
+	}
+	if(valid[card]){
+		var model = { }
+		model.user = valid[card]
+		res.render('welcome.html', model)
+	} else {
+		res.redirect('/login')
+	}
+}
 
 function saveNewMember(req, res){
 	var sql = 'insert into `member`(email, password, name)' +
@@ -44,7 +60,7 @@ function saveNewMember(req, res){
 			model.message = 'Fail to register...'
 		}
 		console.log('mode: ', model)
-		res.render('test.html', model)
+		res.render('register-result.html', model)
 	})
 }
 

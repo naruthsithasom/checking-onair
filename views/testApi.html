@@ -1,6 +1,6 @@
 <% include header.html %>
 <header>
-  <button onclick='refresh()'>Refresh</button>
+  <!-- <button onclick='refresh()'>Refresh</button>
 <div id='panel'></div> 
 <script>
 function refresh(){
@@ -9,13 +9,27 @@ function refresh(){
   .then(response => response.json())//json
   .then(data => { //data 1 ตัวแปร
       var panel = document.querySelector('#panel')
-          for(var i of data){
-              if('email' == data){
-                panel.innerHTML += '<button>' + i + '</button>'
-              }
-          }
+        for(var i of data){
+        panel.innerHTML += '<button>' + i + '</button>'
+      }
   })//json
 }  
-</script>
+</script> -->
+
+   <button onclick='read()'>Refresh</button>
+   <ol id='item'></ol>
+
+   <script>
+       function read(){
+
+           $.get('http://104.154.172.113:81/api/member').done(show)
+       }
+
+       function show(member){
+           for(var i of member){
+               $('#item').append('<li>'+ i +'</li>')
+           }
+       }
+   </script>  
 </header>
 <% include footer.html %>

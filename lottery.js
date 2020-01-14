@@ -41,7 +41,7 @@ function testApi(req, res){
 function listAll(req, res){
 	res.header('Access-Control-Allow-Origin','*')
 	pool.query('select * from member', function(error, data){
-		res.send(data)
+		if('email' == data) res.send(data)
 	})
 }
 function showWelcome(req, res){

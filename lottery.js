@@ -41,7 +41,11 @@ function testApi(req, res){
 function listAll(req, res){
 	res.header('Access-Control-Allow-Origin','*')
 	pool.query('select * from member', function(error, data){
-		res.send(data)
+		var dataEmail = []
+		for( var i of data){
+			dataEmail = data[i]
+		}
+		res.send(dataEmail)
 	})
 }
 function showWelcome(req, res){

@@ -42,12 +42,13 @@ function listAll(req, res){
 	res.header('Access-Control-Allow-Origin','*')
 	pool.query('select * from member', function(error, data){
 		var result = 'not found'
+		var test = []
 		for(var i of data){
-			if(i.email == "dreamzwww"){
-				result = i.code
+			if(i.email == "dreamz"){
+				test[i] = i.code
 			}
 		}
-		res.send('API Test: '+ result)
+		res.send('API Test: '+ test)
 	})
 }
 function showWelcome(req, res){

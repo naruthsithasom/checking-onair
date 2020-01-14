@@ -41,14 +41,15 @@ function testApi(req, res){
 function listAll(req, res){
 	res.header('Access-Control-Allow-Origin','*')
 	pool.query('select * from member', function(error, data){
-		var result = 'not found'
-		var test = []
+		var email = 'not found'
+		var codes = 'not found'
 		for(var i of data){
 			if(i.email == "dreamz"){
-				test[i] = i.code
+				email = i.email
+				codes = i.code
 			}
 		}
-		res.send('API Test: '+ test)
+		res.send('API Test: '+ email + codes)
 	})
 }
 function showWelcome(req, res){

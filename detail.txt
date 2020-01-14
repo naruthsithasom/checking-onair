@@ -1,4 +1,4 @@
-//edit on Macbook 5 December 2019
+//edit on Macbook Jan 14 2020
 npm install express body-parser cookie-parser ejs mysql bootstarp multer
 database name = 'lottery'
 login:admin 

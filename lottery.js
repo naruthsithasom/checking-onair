@@ -20,7 +20,7 @@ lottery.engine('html', ejs.renderFile)
 lottery.get(['/','/home','/lottolucky88'], showListall)
 lottery.get('/login', showLogin)
 lottery.post('/login', readBody, checkPassword)
-lottery.get('/welcome', readCookie, showWelcome)
+//lottery.get('/welcome', readCookie, showWelcome)
 lottery.get('/pass', readCookie, showPass)
 lottery.get('/fail', showFail)
 lottery.get('/forgot', showFotgot)
@@ -105,8 +105,8 @@ function checkPassword(req, res){
 		if(result.length == 1){
 			var card = randomCard()
 			valid[card] = result[0]
-			res.header('Set-Cookie', 'card='+card+';HttpOnly')
-			res.redirect('/welcome')
+			res.header('Set-Cookie', 'card='+card+';HttpOnly')//Server is send ID Cookies.
+			res.redirect('/welcome')//Server is send page welcome.html
 		
 		} else {
 			//res.redirect('/')

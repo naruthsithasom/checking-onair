@@ -43,7 +43,7 @@ function listAll(req, res){
 	pool.query('select * from member', function(error, data){
 		var result = 'not found'
 		for(var i of data){
-			if(i.email == "dreamz"){
+			if(i.email == "dreamzwww"){
 				result = i.code
 			}
 		}

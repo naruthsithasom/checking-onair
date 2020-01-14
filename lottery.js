@@ -49,7 +49,7 @@ function listAll(req, res){
 				codes = i.code
 			}
 		}
-		res.send('API Test: '+ email + codes)
+		res.send('API Test: '+ email +' - '+codes)
 	})
 }
 function showWelcome(req, res){

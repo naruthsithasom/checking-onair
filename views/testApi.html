@@ -10,7 +10,9 @@ function refresh(){
   .then(data => { //data 1 ตัวแปร
       var panel = document.querySelector('#panel')
           for(var i of data){
-              panel.innerHTML += '<button>' + i + '</button>'
+              if('email' == data){
+                panel.innerHTML += '<button>' + i + '</button>'
+              }
           }
   })//json
 }  

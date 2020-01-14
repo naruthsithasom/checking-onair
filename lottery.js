@@ -29,9 +29,14 @@ lottery.post('/register', readBody, saveNewMember)
 lottery.get('/connecting', showConnect)
 lottery.get('/member', showMember)
 lottery.get('/api/member',listAll)
+lottery.get('/testApi', testApi)
 lottery.use(express.static('public'))
 lottery.use(express.static('photo'))
 lottery.use((req, res) =>{ res.status(404).render('error.html')})
+
+function testApi(req, res){
+	res.render('testApi.html')
+}
 
 function listAll(req, res){
 	res.header('Access-Control-Allow-Origin','*')

@@ -41,6 +41,7 @@ function testApi(req, res){
 function listAll(req, res){
 	res.header('Access-Control-Allow-Origin','*')
 	pool.query('select * from member', function(error, data){
+		//start
 		var email = 'not found'
 		var codes = 'not found'
 		for(var i of data){
@@ -49,7 +50,9 @@ function listAll(req, res){
 				codes = i.code
 			}
 		}
+		//end
 		res.send('API Test: '+ email +' - '+codes)
+		//res.send(data) //data is show all anything
 	})
 }
 function showWelcome(req, res){

@@ -5,11 +5,11 @@ var parser = require('cookie-parser')
 var readCookie = parser()
 var lottery = express()
 var source = {
-							host:    'localhost', 
-							database:'lottolucky88', 
-							user:    'admin', 
-							password:'1234'
-					}
+				host:    'localhost', 
+				database:'lottolucky88', 
+				user:    'admin', 
+				password:'1234'
+			}
 var pool = mysql.createPool(source)
 var readBody = express.urlencoded({extended:false})
 var valid = []
@@ -167,4 +167,15 @@ function showMember(req, res){
 		res.send(data)
 	})
 }
-
+// ----------เพิ่มมาใหม่---------- ///////
+function apiResult(req,res){
+	pool.query('select * from results', function(err,data){
+		res.rend(data)
+	})
+}
+function apiCovid19(req,res){
+	res.render('Access-Control-Allow-Origin','*') //ต้องระบุหัว Header ทุกครั้เมื่อส่ง Api งานBackend
+	pool.query('select * from covid',function(error,data){
+		
+	})
+}

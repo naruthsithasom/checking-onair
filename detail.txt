@@ -15,8 +15,9 @@ create table lotto_thai (
   lotto_c2 varchar(8) not null,
   lotto_d1 varchar(8) not null
 );
-insert into lotto_thai (lotto_a1, lotto_b1,lotto_b2, lotto_c1, lotto_c2, lotto_d1) values
-( '453522', '617', '261', '457', '013', '81');
+insert into lotto_thai 
+(lotto_a1, lotto_b1,lotto_b2, lotto_c1, lotto_c2, lotto_d1) 
+values ( '453522', '617', '261', '457', '013', '81');
 
 create table `member`(
   code       int unique not null auto_increment,

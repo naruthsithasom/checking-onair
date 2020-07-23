@@ -178,4 +178,6 @@ function apiCovid19(req,res){
 	pool.query('select * from covid',function(error,data){
 		
 	})
+}function showAPI(req, res){
+	res.render('api.html')
 }

@@ -39,7 +39,7 @@ function testApi(req, res){
 }
 
 function listAll(req, res){
-	res.header('Access-Control-Allow-Origin','*')
+	res.header('Access-Control-Allow-Origin','*')//ต้องใส่header เพื่อส่งAPI
 	pool.query('select * from member', function(error, data){
 		//start
 		var email = 'not found'

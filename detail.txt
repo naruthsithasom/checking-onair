@@ -1,4 +1,4 @@
-//edit on Macbook 28/08/2020
+//edit on Macbook 29/08/2020
 npm install express body-parser cookie-parser ejs mysql bootstarp multer
 database name = 'lottery'
 login:admin 
@@ -17,7 +17,7 @@ create table lotto_thai (
 );
 insert into lotto_thai 
 (lotto_a1, lotto_b1,lotto_b2, lotto_c1, lotto_c2, lotto_d1) 
-values ( '453522', '617', '261', '457', '013', '81');
+values ( '453522', '617', '261', '457', '013', '81');    
 
 create table `member`(
   code       int unique not null auto_increment,

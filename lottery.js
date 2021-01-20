@@ -14,7 +14,7 @@ var pool = mysql.createPool(source)
 var readBody = express.urlencoded({extended:false})
 var valid = []
 
-lottery.listen(81, showStatus)
+lottery.listen(5000, showStatus)
 lottery.engine('html', ejs.renderFile)
 
 lottery.get(['/','/home','/lottolucky88'], showListall)

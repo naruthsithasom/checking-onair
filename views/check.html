@@ -33,12 +33,18 @@
         'btnRadio28' : { true, false}
        -->
         <!--  ALC -->
-      <div class='col-12 d-inline p-2 d-flex justify-content-between bg-danger'>
-        <span class="p-2 text-white">Audio Loudness Control</span>
-        <div class="btn-group  " role="group">
+      <div class='col-12 d-inline p-2 bg-danger'>
+        <div class="p-2 text-white">Audio Loudness Control</div>
+        <div class="btn-group w-100" role="group">
           <span class="input-group-text">Level</span>
-          <input type="text" class="form-control" placeholder='-23 LUFS' name="inputGroup1">
-          <span class="input-group-text">LUFS</span>
+          <select class="form-select form-select-sm" name='inputGroup1'>
+            <option selected value="20">-20 LUFS</option>
+            <option value="22">-22 LUFS</option>
+            <option value="24">-24 LUFS</option>
+            <option value="26">-26 LUFS</option>
+            <option value="28">-28 LUFS</option>
+            <option value="30"> น้อยกว่า -30 LUFS</option>
+          </select>
         </div>
       </div>
       <!--  MSC -->

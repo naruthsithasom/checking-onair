@@ -1,26 +1,29 @@
-const express = require('express');
-const cors = require('cors');
-const readBody = express.urlencoded({ extended: false });
+const express = require('express')
+const app = express()
+const readBody = express.urlencoded({ extended: false })
 const cookieP = require('cookie-parser')
+const readCookie = cookieP()
 
-const app = express();
-const readCookie = cookieP();
-const ejs = require('ejs');
-const mysql = require('mysql');
+const ejs = require('ejs')
+const cors = require('cors')
+
+const mysql = require('mysql')
 const source = {
 	host: 'localhost',
 	database: 'checklist',
 	user: 'root',
-	password: ''
+	password: 'Dreamz1931'
 }
-const pool = mysql.createPool(source);
-let cookieValid = [ ];
-let user = '';
 
-app.listen(5000, showStatus);
-app.engine('html', ejs.renderFile);
+const pool = mysql.createPool(source)
 
-app.get('/checklist', readCookie, checkList);
+let cookieValid = [ ]
+let model = { }		
+
+app.listen(5000, showStatus)
+app.engine('html', ejs.renderFile)
+
+app.get('/checklist', readCookie, checkList)
 app.post('/checklist', readBody, readCookie, saveNewList)
 
 app.get('/query-staff', readCookie, showPool)
@@ -36,13 +39,13 @@ app.post('/login', readBody, checkLogin)
 
 app.get('/logout', readCookie, gotoLogout)
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static('public'));
-app.use(express.static('photo'));
+app.use(cors())
+app.use(express.json())
+app.use(express.static('public'))
+app.use(express.static('photo'))
 
 function showStatus() {
-	let data = new Date();
+	let data = new Date()
 	console.log(`>>>Server is started... ${data}`)
 }
 
@@ -60,9 +63,9 @@ function checkList(req, res) {
 
  function saveNewList(req, res) {
 	//add data to database
-	let id = 3;
-	let data = '';
-	let staff_id = 2;
+	let id = 3
+	let data = ''
+	let staff_id = 2
 	let sql = 'INSERT INTO report SET id = ?, data = ?, staff_id = ?';
 
 	let result = [
@@ -115,7 +118,7 @@ function insert(req, res){
 }
 function testInert(req, res){
 	//let sql = 'INSERT INTO report SET id = ?, data = ?, staff_id = ?';
-	let sql = `INSERT INTO report(id, data, staff_id) VALUES (?,?,?)`;
+	let sql = `INSERT INTO report(id, data, staff_id) VALUES (?,?,?)`
 	let resource = [req.body.id, req.body.data, req.body.staff_id]
 
 	pool.query(sql, resource, (err, d) => {
@@ -132,8 +135,8 @@ function showRegister(req, res){
 
 async function saveRegister(req, res){
 	
-	let sql = 'insert into staff (tvb,name,position,password) values (?,?,?,sha2(?,512))';
-	let data = [req.body.tvb, req.body.name, req.body.position, req.body.password];
+	let sql = 'insert into staff (tvb,name,position,password) values (?,?,?,sha2(?,512))'
+	let data = [req.body.tvb, req.body.name, req.body.position, req.body.password]
 	
 	await pool.query(sql, data,(error, role) => {
 		if(error == null){
@@ -150,21 +153,20 @@ function showLogin(req, res){
 }
 
 function checkLogin(req, res){
-	let sql = 'SELECT * FROM staff WHERE tvb=? AND password=sha2(?,512)';
-	let data = [req.body.tvb, req.body.password];
+	let sql = `SELECT * FROM staff WHERE tvb=? AND password=sha2(?,512)`
+	let data = [ req.body.tvb, req.body.password ]
 
-	pool.query(sql, data, (err, result) => {
-		let model = { }
-		model.all = result;
-		if(result.length == 1){
-			let card = generateKey();
+	pool.query(sql, data, function (err, result) {
+		model.all = result
+		if (result.length == 1) {
+			let card = generateKey()
 			cookieValid[card] = result[0]
-			res.header('Set-Cookie', 'card=' + card ) //Server send card-id cookie
+			res.header('Set-Cookie', 'card='+card+';HttpOnly') //Server send card-id cookie
+			res.render('check.html', model)
 		} else {
-			console.log(data)
-			res.redirect('/failed?' + err)
+			console.error(err)
+			res.redirect('/login')
 		}
-		res.render('check.html', model)
 	})
 }
 

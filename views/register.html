@@ -1,50 +1,124 @@
-<% include header.html %>
-<header>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4 pt-1">
-        <h2>LOTTO <span class="lottolucky88-color-01"> LUCKY </span><span class="lottolucky88-color-02">88</span></h2>
-      </div>
-      <div class="col-lg-8 pt-1"></div>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel='icon' href="/photo03.png">
+  <title>ลงทะเบียน</title>
+  <style>
+    .wrap{
+      width: 440px;
+    }
+    .row > .wrap {
+      margin: auto;
+      padding-top: 30px;
+    }
+    .wrap  div{
+      margin-bottom: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+    <!-- <a class="navbar-brand" href="/checklist">หน้าหลัก</a> -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse px-4" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='/login'>Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='/register'>ลงทะเบียน</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='/checklist'>ตารางเช็คอุปกรณ์ก่อนออกอากาศ</a>
+        </li>
+      </ul>
     </div>
-  </div>
-  </div>
-</header>
-<main>
-  <div class="container">
-    <div class="lottolucky88-cover">
-      <!-- <form method="post" class="lottolucky88-form-register">
-        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-        <input name="email" class="form-control mb-2" placeholder="Your email" required autofocus>
-        <input name="password" type="password" class="form-control" placeholder="Your password" required>
-        <button class="btn btn-lg btn-block lottolucky88-btn-signin" type="submit">Sign Up</button>
-        <div class="mt-5 mb-3 text-center">
-          <b>LOTTO <span class="lottolucky88-color-01"> LUCKY </span><span class="lottolucky88-color-02">88</span>
-            &copy; 2019-2020</b>
+
+  </nav>
+  
+  <div class='row'>
+    <div class="wrap">
+      <form class="needs-validation" novalidate method='post'>
+        <div class="col-12">
+          <label for="validationCustom01" class="form-label">รหัสพนักงาน</label>
+          <input type="text" name='tvb' class="form-control" id="validationCustom01" value="" required>
+          <div class="invalid-feedback">
+            กรุณากรอกรหัสพนักงาน
+          </div>
         </div>
-      </form> -->
-      <div class="lottolucky88-form-register">
-        <form method="post">
-          <div class="form-group">
-            <label>Username</label>
-            <input name="name" class="form-control" placeholder="Username">
+        <div class="col-12">
+          <label for="validationCustom02" class="form-label">ชื่อ-นามสกุล</label>
+          <input type="text" name='name' class="form-control" id="validationCustom02" value="" required>
+          <div class="invalid-feedback">
+            กรุณากรอกชื่อ-นามสกุล
           </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input name="email" class="form-control" placeholder="Email">
+        </div>
+        <div class="col-12">
+          <label for="validationCustomUsername" class="form-label">รหัสผ่าน</label>
+          <!-- <div class="input-group has-validation"> -->
+            <input type="password" name='password' class="form-control" id="validationCustomUsername"
+              aria-describedby="inputGroupPrepend" required>
+            <div class="invalid-feedback">
+              กรุณาใส่รหัสผ่าน
+            </div>
+          <!-- </div> -->
+        </div>
+        <div class="col-12 ">
+          <label for="validationCustom04" class="form-label">ตำแหน่ง</label>
+          <select class="form-select" name='position' id="validationCustom04" required>
+            <option selected disabled value="">ฝ่านวิศวกรรมออกอากาศ</option>
+            <option value='switcher'>เจ้าหน้าที่ลำลับภาพ (SWITCHER)</option>
+            <option value='ccu'>เจ้าหน้าที่กำกับภาพ (CCU)</option>
+            <option value='sound'>เจ้าหน้าที่เสียง (SOUND TECHNICAL)</option>
+            <option value='store'>เจ้าหน้าที่สโตร์ (STORE)</option>
+            <option value='broadcast-engineer'>วิศวกรออกอากาศ (BROADCAST ENGINEER)</option>
+          </select>
+          <div class="invalid-feedback">
+            กรุณาเลือกตำแหน่งงาน
           </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input name="password" type="password" class="form-control" placeholder="Paaword">
-          </div>
-          <button class="btn btn-lg btn-block lottolucky88-btn-signup">Sign Up</button>
-          <div class="mt-5 mb-3 text-center">
-            <b>LOTTO <span class="lottolucky88-color-01"> LUCKY </span><span class="lottolucky88-color-02">88</span>
-              &copy; 2019-2020</b>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="col-12 text-center">
+          <button class="btn btn-primary w-100  mb-2" type="submit">ลงทะเบียน</button>
+          <a href="/login" class="btn btn-danger w-100 " role="button" aria-pressed="true">ยกเลิก</a>
+        </div>
+      </form>
     </div>
   </div>
-</main>
-<% include footer.html %>
+
+  <script>
+    (function () {
+      'use strict'
+      var forms = document.querySelectorAll('.needs-validation')
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

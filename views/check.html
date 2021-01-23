@@ -1,21 +1,51 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <title>Check device</title>
+  <link rel='icon' href="/photo03.png">
 </head>
 
 <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+    <!-- <a class="navbar-brand" href="/checklist">หน้าหลัก</a> -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse px-4" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='/login'>Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='/register'>ลงทะเบียน</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='/checklist'>ตารางเช็คอุปกรณ์ก่อนออกอากาศ</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+     
+    </div>
+    <a href="/logout" class="btn btn-outline-secondary mx-3 active" role="button" aria-pressed="true">ออกจากระบบ</a>
+  </nav>
+
   <div class="container">
-    <form action='/checklist' method='post'>
-    <div class="row ">
-      <div class="col-12 m-0 p-0">
-        <div class="fs-3 text-center bg-success text-white p-2">ตารางเช็คอุปกรณ์ก่อนออกอากาศ</div>
-      </div>
-      <!-- 
+    <form method='post'>
+      <div class="row ">
+        <div class="col-12 m-0 p-0">
+        </div>
+        <!-- 
         'inputGroup1' : "string"
         'inputGroup2' : "string"
         'btnRadio1' : {"AUTO, MANUAL"}
@@ -33,385 +63,405 @@
         'btnRadio28' : { true, false}
        -->
         <!--  ALC -->
-      <div class='col-12 d-inline p-2 bg-danger'>
-        <div class="p-2 text-white">Audio Loudness Control</div>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text">Level</span>
-          <select class="form-select form-select-sm" name='inputGroup1'>
-            <option selected value="20">-20 LUFS</option>
-            <option value="22">-22 LUFS</option>
-            <option value="24">-24 LUFS</option>
-            <option value="26">-26 LUFS</option>
-            <option value="28">-28 LUFS</option>
-            <option value="30"> น้อยกว่า -30 LUFS</option>
-          </select>
+        <div class='col-12 d-inline p-2 bg-danger'>
+          <div class="p-2 text-white">Audio Loudness Control</div>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text">Level</span>
+            <select class="form-select form-select-sm" name='inputGroup1'>
+              <option selected value="20">-20 LUFS</option>
+              <option value="22">-22 LUFS</option>
+              <option value="24">-24 LUFS</option>
+              <option value="26">-26 LUFS</option>
+              <option value="28">-28 LUFS</option>
+              <option value="30"> น้อยกว่า -30 LUFS</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <!--  MSC -->
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class='p-2 text-white'>Master Sync/ Clock Reference</div>
-        <div class="btn-group w-100 mb-1" role="group">
-          <span class="input-group-text ">STATUS:</span>
-          <input type="radio" class="btn-check" name="btnRadio1" value='AUTO' id="radio1" autocomplete="off" checked >
-          <label class="btn btn-outline-primary" for="radio1">AUTO</label>
-          <input type="radio" class="btn-check" name="btnRadio1" value='MANUAL'id="radio2" autocomplete="off">
-          <label class="btn btn-outline-warning" for="radio2">MANUAL</label>
+        <!--  MSC -->
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class='p-2 text-white'>Master Sync/ Clock Reference</div>
+          <div class="btn-group w-100 mb-1" role="group">
+            <span class="input-group-text ">STATUS:</span>
+            <input type="radio" class="btn-check" name="btnRadio1" value='AUTO' id="radio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="radio1">AUTO</label>
+            <input type="radio" class="btn-check" name="btnRadio1" value='MANUAL' id="radio2" autocomplete="off">
+            <label class="btn btn-outline-warning" for="radio2">MANUAL</label>
+          </div>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text">SOURCE</span>
+            <input type="radio" class="btn-check" name="btnRadio2" value='PRIMARY' id="radio3" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-primary" for="radio3">PRIMARY</label>
+            <input type="radio" class="btn-check" name="btnRadio2" value='BACKUP' id="radio4" autocomplete="off">
+            <label class="btn btn-outline-warning" for="radio4">BACKUP</label>
+          </div>
         </div>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text">SOURCE</span>
-          <input type="radio" class="btn-check" name="btnRadio2" value='PRIMARY' id="radio3" autocomplete="off" checked>
-          <label class="btn btn-outline-primary" for="radio3">PRIMARY</label>
-          <input type="radio" class="btn-check" name="btnRadio2" value='BACKUP' id="radio4" autocomplete="off">
-          <label class="btn btn-outline-warning" for="radio4">BACKUP</label>
+        <!--  IRD -->
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="bg-secondary text-white">
+            <div class="p-2 text-center">IRD 1 (HD/SD)</div>
+            <select class="form-select form-select-sm" name='selected1'>
+              <option selected value="">FORMAT VIDEO</option>
+              <option value="720p">720P</option>
+              <option value="1080i">1080i</option>
+            </select>
+          </div>
+          <div>
+            <select class="form-select form-select-sm" name='selected2'>
+              <option selected value="">TV-CHANNEL</option>
+              <option value="TV-5HD">TV-5HD</option>
+              <option value="NBT ">NBT</option>
+              <option value="THAIPBS">THAIPBS</option>
+              <option value="TPTV">TPTV</option>
+              <option value="TNN16">TNN16</option>
+              <option value="NEW18">NEW18</option>
+              <option value="NATION">NATION</option>
+              <option value="WORKPOINT">WORKPOINT</option>
+              <option value="TRUE4U">TRUE4U</option>
+              <option value="GMM25">GMM25</option>
+              <option value="TV-8SD">TV-8</option>
+              <option value="MONO29">MONO29</option>
+              <option value="MCOT">MCOT</option>
+              <option value="ONE">ONE</option>
+              <option value="THAIRATH-TV">THAIRATH-TV</option>
+              <option value="TV-33HD">TV-33HD</option>
+              <option value="AMARIN">AMARIN</option>
+              <option value="TV-35HD">TV-35HD</option>
+              <option value="PPTV">PPTV</option>
+            </select>
+          </div>
+          <div>
+            <select class="form-select form-select-sm" name='selected3'>
+              <option selected value="">AUDIO</option>
+              <option value="TRACK: 1 (L1,R1)">Track: 1 (L1,R1)</option>
+              <option value="TRACK: 2 (L2,R2)">Track: 2 (L2,R2)</option>
+            </select>
+          </div>
         </div>
-      </div>
-    <!--  IRD -->
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="bg-secondary text-white">
-          <div class="p-2 text-center">IRD 1 (HD/SD)</div>
-          <select class="form-select form-select-sm" name='selected1'>
-            <option selected value="">FORMAT VIDEO</option>
-            <option value="720p">720P</option>
-            <option value="1080i">1080i</option>
-          </select>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="bg-secondary text-white">
+            <div class="p-2 text-center">IRD 2 (HD/SD)</div>
+            <select class="form-select form-select-sm" name='selected4'>
+              <option selected value="">FORMAT VIDEO</option>
+              <option value="720p">720P</option>
+              <option value="1080i">1080i</option>
+            </select>
+          </div>
+          <div>
+            <select class="form-select form-select-sm" name='selected5'>
+              <option selected value="">TV-CHANNEL</option>
+              <option value="TV-5HD">TV-5HD</option>
+              <option value="NBT ">NBT</option>
+              <option value="THAIPBS">THAIPBS</option>
+              <option value="TPTV">TPTV</option>
+              <option value="TNN16">TNN16</option>
+              <option value="NEW18">NEW18</option>
+              <option value="NATION">NATION</option>
+              <option value="WORKPOINT">WORKPOINT</option>
+              <option value="TRUE4U">TRUE4U</option>
+              <option value="GMM25">GMM25</option>
+              <option value="TV-8SD">TV-8</option>
+              <option value="MONO29">MONO29</option>
+              <option value="MCOT">MCOT</option>
+              <option value="ONE">ONE</option>
+              <option value="THAIRATH-TV">THAIRATH-TV</option>
+              <option value="TV-33HD">TV-33HD</option>
+              <option value="AMARIN">AMARIN</option>
+              <option value="TV-35HD">TV-35HD</option>
+              <option value="PPTV">PPTV</option>
+            </select>
+          </div>
+          <div>
+            <select class="form-select form-select-sm" name='selected6'>
+              <option selected value="">AUDIO</option>
+              <option value="TRACK: 1 (L1,R1)">Track: 1 (L1,R1)</option>
+              <option value="TRACK: 2 (L2,R2)">Track: 2 (L2,R2)</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <select class="form-select form-select-sm" name='selected2'>
-            <option selected value="">TV-CHANNEL</option>
-            <option value="TV-5HD">TV-5HD</option>
-            <option value="NBT ">NBT</option>
-            <option value="THAIPBS">THAIPBS</option>
-            <option value="TPTV">TPTV</option>
-            <option value="TNN16">TNN16</option>
-            <option value="NEW18">NEW18</option>
-            <option value="NATION">NATION</option>
-            <option value="WORKPOINT">WORKPOINT</option>
-            <option value="TRUE4U">TRUE4U</option>
-            <option value="GMM25">GMM25</option>
-            <option value="TV-8SD">TV-8</option>
-            <option value="MONO29">MONO29</option>
-            <option value="MCOT">MCOT</option>
-            <option value="ONE">ONE</option>
-            <option value="THAIRATH-TV">THAIRATH-TV</option>
-            <option value="TV-33HD">TV-33HD</option>
-            <option value="AMARIN">AMARIN</option>
-            <option value="TV-35HD">TV-35HD</option>
-            <option value="PPTV">PPTV</option>
-          </select>
-        </div>
-        <div>
-          <select class="form-select form-select-sm" name='selected3'>
-            <option selected value="">AUDIO</option>
-            <option value="TRACK: 1 (L1,R1)">Track: 1 (L1,R1)</option>
-            <option value="TRACK: 2 (L2,R2)">Track: 2 (L2,R2)</option>
-          </select>
-        </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="bg-secondary text-white">
-          <div class="p-2 text-center">IRD 2 (HD/SD)</div>
-          <select class="form-select form-select-sm" name='selected4'>
-            <option selected value="">FORMAT VIDEO</option>
-            <option value="720p">720P</option>
-            <option value="1080i">1080i</option>
-          </select>
-        </div>
-        <div>
-          <select class="form-select form-select-sm" name='selected5'>
-            <option selected value="">TV-CHANNEL</option>
-            <option value="TV-5HD">TV-5HD</option>
-            <option value="NBT ">NBT</option>
-            <option value="THAIPBS">THAIPBS</option>
-            <option value="TPTV">TPTV</option>
-            <option value="TNN16">TNN16</option>
-            <option value="NEW18">NEW18</option>
-            <option value="NATION">NATION</option>
-            <option value="WORKPOINT">WORKPOINT</option>
-            <option value="TRUE4U">TRUE4U</option>
-            <option value="GMM25">GMM25</option>
-            <option value="TV-8SD">TV-8</option>
-            <option value="MONO29">MONO29</option>
-            <option value="MCOT">MCOT</option>
-            <option value="ONE">ONE</option>
-            <option value="THAIRATH-TV">THAIRATH-TV</option>
-            <option value="TV-33HD">TV-33HD</option>
-            <option value="AMARIN">AMARIN</option>
-            <option value="TV-35HD">TV-35HD</option>
-            <option value="PPTV">PPTV</option>
-          </select>
-        </div>
-        <div>
-          <select class="form-select form-select-sm" name='selected6'>
-            <option selected value="">AUDIO</option>
-            <option value="TRACK: 1 (L1,R1)">Track: 1 (L1,R1)</option>
-            <option value="TRACK: 2 (L2,R2)">Track: 2 (L2,R2)</option>
-          </select>
-        </div>
-      </div>
-      
-      <!-- MCR -->
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class='p-2 text-white'>MASTER CONTROL ROOM (ONAIR)</div>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">ON - AIR</span>
-          <input type="radio" class="btn-check" name="btnRadio3" value="true" id="radio5" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="radio5">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio3" value="false" id="radio6" autocomplete="off">
-          <label class="btn btn-outline-danger" for="radio6">FAIL</label>
-        </div>
-      </div>
 
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">C-BAND</span>
-          <input type="radio" class="btn-check" name="btnRadio4" value="true" id="radio7" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="radio7">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio4" value="false" id="radio8" autocomplete="off">
-          <label class="btn btn-outline-danger" for="radio8">FAIL</label>
+        <!-- MCR -->
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class='p-2 text-white'>MASTER CONTROL ROOM (ONAIR)</div>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">ON - AIR</span>
+            <input type="radio" class="btn-check" name="btnRadio3" value="true" id="radio5" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="radio5">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio3" value="false" id="radio6" autocomplete="off">
+            <label class="btn btn-outline-danger" for="radio6">FAIL</label>
+          </div>
         </div>
-      </div>
 
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">KUBAND</span>
-          <input type="radio" class="btn-check" name="btnRadio5" value="true" id="radio9" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="radio9">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio5" value="false" id="radio10" autocomplete="off">
-          <label class="btn btn-outline-danger" for="radio10">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">C-BAND</span>
+            <input type="radio" class="btn-check" name="btnRadio4" value="true" id="radio7" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="radio7">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio4" value="false" id="radio8" autocomplete="off">
+            <label class="btn btn-outline-danger" for="radio8">FAIL</label>
+          </div>
         </div>
-      </div>
 
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class='p-2 text-white'>VIDEO FILE BASES</div>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-primary text-white">VIDEO SERVER OMEON-1</span>
-          <input type="radio" class="btn-check" name="btnRadio6" value="true" id="radio11" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="radio11">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio6" value="false" id="radio12" autocomplete="off">
-          <label class="btn btn-outline-danger" for="radio12">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">KUBAND</span>
+            <input type="radio" class="btn-check" name="btnRadio5" value="true" id="radio9" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="radio9">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio5" value="false" id="radio10" autocomplete="off">
+            <label class="btn btn-outline-danger" for="radio10">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-primary text-white">VIDEO SERVER OMEON-2</span>
-          <input type="radio" class="btn-check" name="btnRadio7" value="true" id="radio13" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="radio13">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio7" value="false" id="radio14" autocomplete="off">
-          <label class="btn btn-outline-danger" for="radio14">FAIL</label>
-        </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-primary text-white">VIDEO SERVER OMEON-3</span>
-          <input type="radio" class="btn-check" name="btnRadio8" value="true" id="radio15" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="radio15">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio8" value="false" id="radio16" autocomplete="off">
-          <label class="btn btn-outline-danger" for="radio16">FAIL</label>
-        </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-primary text-white">VIDEO SERVER OMEON-4</span>
-          <input type="radio" class="btn-check" name="btnRadio9" value="true" id="btnradio17" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio17">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio9" value="false" id="btnradio-18" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-18">FAIL</label>
-        </div>
-      </div>
-      <!-- Section-->
 
-      <div class='col-12 d-inline p-2 bg-dark '>
-        <div class='p-2 text-white'>LOCAL TELEVISION THAILAND</div>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 1 </span>
-          <input type="radio" class="btn-check" name="btnRadio10" value="true" id="btnradio-19" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-19">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio10" value="false" id="btnradio-20" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-20">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class='p-2 text-white'>VIDEO FILE BASES</div>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-primary text-white">VIDEO SERVER OMEON-1</span>
+            <input type="radio" class="btn-check" name="btnRadio6" value="true" id="radio11" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="radio11">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio6" value="false" id="radio12" autocomplete="off">
+            <label class="btn btn-outline-danger" for="radio12">FAIL</label>
+          </div>
         </div>
-      </div>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-primary text-white">VIDEO SERVER OMEON-2</span>
+            <input type="radio" class="btn-check" name="btnRadio7" value="true" id="radio13" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="radio13">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio7" value="false" id="radio14" autocomplete="off">
+            <label class="btn btn-outline-danger" for="radio14">FAIL</label>
+          </div>
+        </div>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-primary text-white">VIDEO SERVER OMEON-3</span>
+            <input type="radio" class="btn-check" name="btnRadio8" value="true" id="radio15" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="radio15">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio8" value="false" id="radio16" autocomplete="off">
+            <label class="btn btn-outline-danger" for="radio16">FAIL</label>
+          </div>
+        </div>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-primary text-white">VIDEO SERVER OMEON-4</span>
+            <input type="radio" class="btn-check" name="btnRadio9" value="true" id="btnradio17" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio17">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio9" value="false" id="btnradio-18" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-18">FAIL</label>
+          </div>
+        </div>
+        <!-- Section-->
 
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 2 </span>
-          <input type="radio" class="btn-check" name="btnRadio11" value="true" id="btnradio-21" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-21">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio11" value="false" id="btnradio-22" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-22">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark '>
+          <div class='p-2 text-white'>LOCAL TELEVISION THAILAND</div>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 1 </span>
+            <input type="radio" class="btn-check" name="btnRadio10" value="true" id="btnradio-19" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-19">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio10" value="false" id="btnradio-20" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-20">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 3 </span>
-          <input type="radio" class="btn-check" name="btnRadio12" value="true" id="btnradio-23" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-23">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio12" value="false" id="btnradio-24" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-24">FAIL</label>
+
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 2 </span>
+            <input type="radio" class="btn-check" name="btnRadio11" value="true" id="btnradio-21" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-21">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio11" value="false" id="btnradio-22" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-22">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 4 </span>
-          <input type="radio" class="btn-check" name="btnRadio13" value="true" id="btnradio-25" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-25">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio13" value="false" id="btnradio-26" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-26">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 3 </span>
+            <input type="radio" class="btn-check" name="btnRadio12" value="true" id="btnradio-23" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-23">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio12" value="false" id="btnradio-24" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-24">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 5 </span>
-          <input type="radio" class="btn-check" name="btnRadio14" value="true" id="btnradio-27" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-27">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio14" value="false" id="btnradio-28" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-28">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 4 </span>
+            <input type="radio" class="btn-check" name="btnRadio13" value="true" id="btnradio-25" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-25">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio13" value="false" id="btnradio-26" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-26">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 6 </span>
-          <input type="radio" class="btn-check" name="btnRadio15" value="true" id="btnradio-29" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-29">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio15" value="false" id="btnradio-30" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-30">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 5 </span>
+            <input type="radio" class="btn-check" name="btnRadio14" value="true" id="btnradio-27" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-27">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio14" value="false" id="btnradio-28" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-28">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 7 </span>
-          <input type="radio" class="btn-check" name="btnRadio16" value="true" id="btnradio-31" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-31">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio16" id="btnradio-32" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-32">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 6 </span>
+            <input type="radio" class="btn-check" name="btnRadio15" value="true" id="btnradio-29" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-29">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio15" value="false" id="btnradio-30" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-30">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 8 </span>
-          <input type="radio" class="btn-check" name="btnRadio17" value="true" id="btnradio-33" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-33">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio17" value="false" id="btnradio-34" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-34">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 7 </span>
+            <input type="radio" class="btn-check" name="btnRadio16" value="true" id="btnradio-31" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-31">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio16" id="btnradio-32" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-32">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 9 </span>
-          <input type="radio" class="btn-check" name="btnRadio18" value="true" id="btnradio-35" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-35">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio18" value="false" id="btnradio-36" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-36">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 8 </span>
+            <input type="radio" class="btn-check" name="btnRadio17" value="true" id="btnradio-33" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-33">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio17" value="false" id="btnradio-34" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-34">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 10 </span>
-          <input type="radio" class="btn-check" name="btnRadio19" value="true" id="btnradio-37" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-37">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio19" value="false" id="btnradio-38" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-38">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 9 </span>
+            <input type="radio" class="btn-check" name="btnRadio18" value="true" id="btnradio-35" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-35">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio18" value="false" id="btnradio-36" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-36">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 11 </span>
-          <input type="radio" class="btn-check" name="btnRadio20" value="true" id="btnradio-39" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-39">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio20" value="false" id="btnradio-40" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-40">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 10 </span>
+            <input type="radio" class="btn-check" name="btnRadio19" value="true" id="btnradio-37" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-37">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio19" value="false" id="btnradio-38" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-38">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text ">OFFAIR MONITOR 12 </span>
-          <input type="radio" class="btn-check" name="btnRadio21" value="true" id="btnradio-41" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-41">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio21" value="false" id="btnradio-42" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-42">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 11 </span>
+            <input type="radio" class="btn-check" name="btnRadio20" value="true" id="btnradio-39" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-39">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio20" value="false" id="btnradio-40" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-40">FAIL</label>
+          </div>
         </div>
-      </div>
-      
-      <!-- Section-->
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class='p-2 text-white'>CARD PROCESSOR</div>
-        <div class="btn-group w-100 " role="group">
-          <span class="input-group-text bg-warning">MAIN FRAME 1</span>
-          <input type="radio" class="btn-check" name="btnRadio22" value="true" id="btnradio-43" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-43">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio22" value="false" id="btnradio-44" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-44">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text ">OFFAIR MONITOR 12 </span>
+            <input type="radio" class="btn-check" name="btnRadio21" value="true" id="btnradio-41" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-41">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio21" value="false" id="btnradio-42" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-42">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-warning">MAIN FRAME 2</span>
-          <input type="radio" class="btn-check" name="btnRadio23" value="true" id="btnradio-45" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-45">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio23" value="false" id="btnradio-46" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-46">FAIL</label>
+
+        <!-- Section-->
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class='p-2 text-white'>CARD PROCESSOR</div>
+          <div class="btn-group w-100 " role="group">
+            <span class="input-group-text bg-warning">MAIN FRAME 1</span>
+            <input type="radio" class="btn-check" name="btnRadio22" value="true" id="btnradio-43" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-43">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio22" value="false" id="btnradio-44" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-44">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-warning">MAIN FRAME 3</span>
-          <input type="radio" class="btn-check" name="btnRadio24" value="true" id="btnradio-47" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-47">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio24" value="false" id="btnradio-48" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-48">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-warning">MAIN FRAME 2</span>
+            <input type="radio" class="btn-check" name="btnRadio23" value="true" id="btnradio-45" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-45">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio23" value="false" id="btnradio-46" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-46">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-warning">MAIN FRAME 4</span>
-          <input type="radio" class="btn-check" name="btnRadio25" value="true" id="btnradio-49" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-49">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio25" value="false" id="btnradio-50" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-50">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-warning">MAIN FRAME 3</span>
+            <input type="radio" class="btn-check" name="btnRadio24" value="true" id="btnradio-47" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-47">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio24" value="false" id="btnradio-48" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-48">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark '>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-warning">MAIN FRAME 5</span>
-          <input type="radio" class="btn-check" name="btnRadio26" value="true" id="btnradio-51" autocomplete="off" checked>
-          <label class="btn btn-outline-success" for="btnradio-51">OK</label>
-          <input type="radio" class="btn-check" name="btnRadio26" value="false" id="btnradio-52" autocomplete="off">
-          <label class="btn btn-outline-danger" for="btnradio-52">FAIL</label>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-warning">MAIN FRAME 4</span>
+            <input type="radio" class="btn-check" name="btnRadio25" value="true" id="btnradio-49" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-49">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio25" value="false" id="btnradio-50" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-50">FAIL</label>
+          </div>
         </div>
-      </div>
-      <!-- Section-->
-      <div class='col-12 d-inline p-2 bg-dark '>
-        <div class='p-2 text-white'>LINK FIBER-OPTIC THAIRATH TO MUX-MCOT</div>
-        <div class="btn-group w-100" role="group">
-          <span class="input-group-text bg-danger text-white">LINK MCOT9</span>
-          <input type="radio" class="btn-check" name="btnRadio27" value="MAIN" id="btnradio-53" autocomplete="off" checked>
-          <label class="btn btn-outline-primary" for="btnradio-53">MAIN</label>
-          <input type="radio" class="btn-check" name="btnRadio27" value="false" id="btnradio-54" autocomplete="off">
-          <label class="btn btn-outline-warning" for="btnradio-54">BACK</label>
+        <div class='col-12 d-inline p-2 bg-dark '>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-warning">MAIN FRAME 5</span>
+            <input type="radio" class="btn-check" name="btnRadio26" value="true" id="btnradio-51" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-success" for="btnradio-51">OK</label>
+            <input type="radio" class="btn-check" name="btnRadio26" value="false" id="btnradio-52" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio-52">FAIL</label>
+          </div>
         </div>
-      </div>
-      <div class='col-12 d-inline p-2 bg-dark'>
-        <div class="btn-group w-100 " role="group">
-          <span class="input-group-text bg-danger text-white">LINK THCOM</span>
-          <input type="radio" class="btn-check" name="btnRadio28" value="MAIN" id="btnradio-55" autocomplete="off" checked>
-          <label class="btn btn-outline-primary" for="btnradio-55">MAIN</label>
-          <input type="radio" class="btn-check" name="btnRadio28" value="BACKUP" id="btnradio-56" autocomplete="off">
-          <label class="btn btn-outline-warning" for="btnradio-56">BACK</label>
+        <!-- Section-->
+        <div class='col-12 d-inline p-2 bg-dark '>
+          <div class='p-2 text-white'>LINK FIBER-OPTIC THAIRATH TO MUX-MCOT</div>
+          <div class="btn-group w-100" role="group">
+            <span class="input-group-text bg-danger text-white">LINK MCOT9</span>
+            <input type="radio" class="btn-check" name="btnRadio27" value="MAIN" id="btnradio-53" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-primary" for="btnradio-53">MAIN</label>
+            <input type="radio" class="btn-check" name="btnRadio27" value="false" id="btnradio-54" autocomplete="off">
+            <label class="btn btn-outline-warning" for="btnradio-54">BACK</label>
+          </div>
         </div>
-      </div>
-      <!-- Section-->
-      <div class='col-12 d-inline p-2  bg-light'>
-        <div class="input-group">
-          <div class="input-group-prepend w-100">
-            <span class="input-group-text">บันทึกประจำวัน</span>
-          <textarea class="form-control" placeholder="ใส่ข้อความ" name="inputGroup2"></textarea>
+        <div class='col-12 d-inline p-2 bg-dark'>
+          <div class="btn-group w-100 " role="group">
+            <span class="input-group-text bg-danger text-white">LINK THCOM</span>
+            <input type="radio" class="btn-check" name="btnRadio28" value="MAIN" id="btnradio-55" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-primary" for="btnradio-55">MAIN</label>
+            <input type="radio" class="btn-check" name="btnRadio28" value="BACKUP" id="btnradio-56" autocomplete="off">
+            <label class="btn btn-outline-warning" for="btnradio-56">BACK</label>
+          </div>
         </div>
+        <!-- Section-->
+        <div class='col-12 d-inline p-2  bg-light'>
+          <div class="input-group">
+            <div class="input-group-prepend w-100">
+              <span class="input-group-text">บันทึกประจำวัน</span>
+              <textarea class="form-control" placeholder="ใส่ข้อความ" name="inputGroup2"></textarea>
+            </div>
+          </div>
         </div>
-      </div>
-      
-        <button type="submit" class="btn btn-primary w-100">บันทึก</button>
-      
-    </div> <!-- row -->
-  </form>
+        <button type="submit" class="btn btn-primary w-100 mb-2">บันทึก</button>
+        <a href="/login" class="btn btn-danger w-100 active" role="button" aria-pressed="true">ยกเลิก</a>
+      </div> <!-- row -->
+    </form>
   </div> <!-- container -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"

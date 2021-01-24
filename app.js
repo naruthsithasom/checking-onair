@@ -8,7 +8,6 @@ const ejs = require('ejs')
 const cors = require('cors')
 
 const mysql = require('mysql')
-const { report } = require('process')
 const source = {
 	host: 'localhost',
 	database: 'checklist',
@@ -21,21 +20,15 @@ const readBody = express.urlencoded({ extended: false })
 
 let cookieValid = [ ]
 let model = { }	
-let reports = { }
-//let staffResult =  { }	
-
+	
 app.listen(5000, showStatus)
 app.engine('html', ejs.renderFile)
 
 
 app.get(['/', '/dashboad'],readCookie, homePage)
+
 app.get('/checklist', readCookie, checkList)
 app.post('/checklist',readCookie, readBody, saveNewList)
-
-app.get('/query-staff', readCookie, showPool)
-
-app.get('/insert', showInsert)
-app.post('/insert', readBody,  testInert)
 
 app.get('/register', showRegister)
 app.post('/register', readBody, saveRegister)
@@ -62,22 +55,18 @@ function homePage(req, res) {
 	if( req.cookies != null ) {
 		card = req.cookies.card
 	} 
-	if( cookieValid[card] ){
-		pool.query('select * from staff', (error, result) => {
+		if( cookieValid[card] ){
+			pool.query('select * from staff', (error, result) => {
 			model.stafflists = result
-			// res.render('dashboad.html', model)
 		})
-		///////////////////
-		pool.query('select * from report', (error, result) => {
+			pool.query('select * from report', (error, result) => {
 			model.report = result
 			res.render('dashboad.html',model)		
 		})
-	} else {
+	} 
+	else {
 		res.redirect('/login')
 	}
-	// res.send(model.all) 
-	//model.all >> [{"id":7,"tvb":"tvb002","name":"lisa","position":"store","password":""}]
-	//model {"all":[{"id":7,"tvb":"tvb002","name":"lisa","position":"store","password":""}],"_locals":{}}
 }
 
 function checkList(req, res) {
@@ -86,7 +75,6 @@ function checkList(req, res) {
 		card = req.cookies.card
 	}
 	if( cookieValid[card] ) {
-		//แนบข้อมูลใน model.tvb model.name 
 		res.render('check.html', model) 
 	} else {
 		res.redirect('/login')
@@ -94,7 +82,6 @@ function checkList(req, res) {
 }
 
 function saveNewList(req, res) {
-	//add data to database
 	let sql = 'INSERT INTO REPORT (data, staff_id) values (?, ?)'
 	let data_ = ""
 	let result = [
@@ -111,58 +98,22 @@ function saveNewList(req, res) {
 		req.body.btnRadio24, req.body.btnRadio25, req.body.btnRadio26,
 		req.body.btnRadio27, req.body.btnRadio28, req.body.inputGroup2,
 	]
-	for ( let i in result) {
-		data_ = data_ + '-' + result[i]
-	}
+	
+	for ( let i in result) { data_ = data_ + '-' + result[i] }
 
 	let m = model.staff
 	let staff_	= m.find( x => x.id )
-
 	let data = [data_, Number(staff_.id)]
+
 	pool.query(sql, data, (err) => {
 		if(err == null){
-			//res.send(data);
 			res.render('dashboad.html', model)
 			console.log('OK: insert data success...')
-		}else {
+		}
+		else {
 			console.log('err: ',err)
 		}
 	 })
-}
-
-function showPool(req, res){
-	let card = null
-	if( req.cookies != null ) {
-		card = req.cookies.card
-	} 
-	if( cookieValid[card] ){
-		pool.query(`SELECT * FROM staff`, (err, data) => {
-			
-			res.send(data);
-		})
-	} else {
-		res.send('Access Permission')
-	}
-}
-
-function showInsert(req, res){
-	res.render('test.html')
-}
-
-function testInert(req, res){
-	let sql = 'INSERT INTO REPORT (data, staff_id) values (?, ?)'
-	let add = [req.body.data, Number(req.body.staff_id)]
-
-	 pool.query(sql, add, (err) => {
-		if(err == null){ 
-			res.send('Success')
-			console.log('insert done!!') 
-		}
-		else { 
-			res.send(err) 
-			console.log('err>>',err) 
-		}
-	})
 }
 
 function showRegister(req, res){
@@ -222,20 +173,11 @@ function generateKey(){
 
 function gotoLogout(req, res){
 	let card = req.cookies.card
-	cookieValid[card] = null //ลบcard cookie
-	model = {}
-	res.render('logout.html')
+	cookieValid[card] = null
+	res.render('login.html')
 }
 
 function showProfile(req, res){
-	// let obj = { }
-	// obj.time = [{
-	// 							data_: 'tesst send',
-	// 							date_times_: 'now currensst'
-	// 						}]
-				
-	//res.send(reports)
-	//res.render('profile.html', report)	
 
 	let card = null
 	if( req.cookies != null ) {
@@ -274,3 +216,37 @@ function showProfile(req, res){
 | staff_id   | int      | YES  |     | NULL              |                   |
 +------------+----------+------+-----+-------------------+-------------------+
 */
+// app.get('/query-staff', readCookie, showPool)
+// app.get('/insert', showInsert)
+// app.post('/insert', readBody,  testInert)
+// function showInsert(req, res){ res.render('test.html')}
+
+// function testInert(req, res){
+// 	let sql = 'INSERT INTO REPORT (data, staff_id) values (?, ?)'
+// 	let add = [req.body.data, Number(req.body.staff_id)]
+
+// 	 pool.query(sql, add, (err) => {
+// 		if(err == null){ 
+// 			res.send('Success')
+// 			console.log('insert done!!') 
+// 		}
+// 		else { 
+// 			res.send(err) 
+// 			console.log('err>>',err) 
+// 		}
+// 	})
+// }
+// function showPool(req, res){
+// 	let card = null
+// 	if( req.cookies != null ) {
+// 		card = req.cookies.card
+// 	} 
+// 	if( cookieValid[card] ){
+// 		pool.query(`SELECT * FROM staff`, (err, data) => {
+			
+// 			res.send(data);
+// 		})
+// 	} else {
+// 		res.send('Access Permission')
+// 	}
+// }

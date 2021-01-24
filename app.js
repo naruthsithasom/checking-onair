@@ -8,6 +8,7 @@ const ejs = require('ejs')
 const cors = require('cors')
 
 const mysql = require('mysql')
+const { report } = require('process')
 const source = {
 	host: 'localhost',
 	database: 'checklist',
@@ -20,13 +21,14 @@ const readBody = express.urlencoded({ extended: false })
 
 let cookieValid = [ ]
 let model = { }	
-let staffResult =  { }	
+let reports = { }
+//let staffResult =  { }	
 
 app.listen(5000, showStatus)
 app.engine('html', ejs.renderFile)
 
 
-app.get(['/', '/dashboad'], homePage)
+app.get(['/', '/dashboad'],readCookie, homePage)
 app.get('/checklist', readCookie, checkList)
 app.post('/checklist',readCookie, readBody, saveNewList)
 
@@ -41,7 +43,7 @@ app.post('/register', readBody, saveRegister)
 app.get('/login', showLogin)
 app.post('/login', readBody, checkLogin)
 
-app.get('/profile', showProfile)
+app.get('/profile', readCookie, showProfile)
 
 app.get('/logout', readCookie, gotoLogout)
 
@@ -56,7 +58,23 @@ function showStatus() {
 }
 
 function homePage(req, res) {
-	res.render('index.html')
+	let card = null
+	if( req.cookies != null ) {
+		card = req.cookies.card
+	} 
+	if( cookieValid[card] ){
+		pool.query('select * from staff', (error, result) => {
+			model.stafflists = result
+			// res.render('dashboad.html', model)
+		})
+		///////////////////
+		pool.query('select * from report', (error, result) => {
+			model.report = result
+			res.render('dashboad.html',model)		
+		})
+	} else {
+		res.redirect('/login')
+	}
 	// res.send(model.all) 
 	//model.all >> [{"id":7,"tvb":"tvb002","name":"lisa","position":"store","password":""}]
 	//model {"all":[{"id":7,"tvb":"tvb002","name":"lisa","position":"store","password":""}],"_locals":{}}
@@ -97,14 +115,14 @@ function saveNewList(req, res) {
 		data_ = data_ + '-' + result[i]
 	}
 
-	let m = model.all
+	let m = model.staff
 	let staff_	= m.find( x => x.id )
 
 	let data = [data_, Number(staff_.id)]
 	pool.query(sql, data, (err) => {
 		if(err == null){
 			//res.send(data);
-			res.render('profile.html', model)
+			res.render('dashboad.html', model)
 			console.log('OK: insert data success...')
 		}else {
 			console.log('err: ',err)
@@ -168,18 +186,23 @@ function showLogin(req, res){
 	res.render('login.html')
 }
 
-function checkLogin(req, res){
+async function checkLogin(req, res){
 	let sql = `SELECT * FROM staff WHERE tvb=? AND password=sha2(?,512)`
 	let data = [ req.body.tvb, req.body.password ]	
-	pool.query( sql, data,  ( err, result ) => {
-		staffResult = result
-		model.all = result
+	await pool.query( sql, data,  ( err, result ) => {
+		//staffResult = result
+		model.staff = result
 		if ( result.length == 1 ) {
 			let card = generateKey()
 			cookieValid[ card ] = result[0]
 			res.header( 'Set-Cookie', 'card='+card ) 
-			res.render( 'check.html', model ) 
-		} else {
+			// res.render( 'dashboad.html', model ) 
+		} if(result.length == 1 ){
+			pool.query('select * from report', (error, result) => {
+				model.report = result
+				res.render('dashboad.html',model)		
+			})
+		}else {
 			console.error(err)
 			res.redirect('/login')
 		}
@@ -205,5 +228,49 @@ function gotoLogout(req, res){
 }
 
 function showProfile(req, res){
-	res.render('profile.html', model)
+	// let obj = { }
+	// obj.time = [{
+	// 							data_: 'tesst send',
+	// 							date_times_: 'now currensst'
+	// 						}]
+				
+	//res.send(reports)
+	//res.render('profile.html', report)	
+
+	let card = null
+	if( req.cookies != null ) {
+		card = req.cookies.card
+	} 
+	if( cookieValid[card] ){
+		pool.query('select * from report', (error, result) => {
+			model.report = result
+			res.render('profile.html',model)		
+		})
+
+	} else {
+		res.redirect('/login')
+	}
 }
+/*
+        <% for (let i in all) { %>
+          <label>ชื่อ-นามสกุล:</label> <span> <%= all[i].name %> </span> <br/>
+          <label>รหัสพนักงาน:</label> <span> <%= all[i].tvb %> </span><br/>
+          <label>ตำแหน่ง:</label> <span> <%= all[i].position %> </span><br/>
+					<% } %>
+					
+
+      <% all.map( x => { %>
+        <%= x.data %>
+      <% }) %>
+*/
+
+/*
++------------+----------+------+-----+-------------------+-------------------+
+| Field      | Type     | Null | Key | Default           | Extra             |
++------------+----------+------+-----+-------------------+-------------------+
+| id         | int      | NO   | PRI | NULL              | auto_increment    |
+| data       | text     | NO   |     | NULL              |                   |
+| date_times | datetime | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| staff_id   | int      | YES  |     | NULL              |                   |
++------------+----------+------+-----+-------------------+-------------------+
+*/

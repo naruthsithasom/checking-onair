@@ -8,6 +8,7 @@
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <title>Check device</title>
   <link rel='icon' href="/photo03.png">
+
 </head>
 
 <body>
@@ -18,25 +19,33 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse px-4" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse px-4 mx-5" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">dashboard</a>
-        </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link" href='/login'>Login</a>
-        </li>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" href='/register'>ลงทะเบียน</a>
+          <a class="nav-link" href='/profile'> <img src="photo04.png"  width='20' height='20'alt="" ></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ">
+          <a class="nav-link" href='/profile'>
+          <small>ผู้ใช้งาน: 
+            <%  all.map( i => { %> <%= i.name %> <% }) %> 
+          </small>
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href='/register'></a>
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link" href='/checklist'>ตารางเช็คอุปกรณ์ก่อนออกอากาศ</a>
-        </li>
+        </li> -->
       </ul>
+      <a href="/logout" class="btn btn-outline-secondary active" role="button" aria-pressed="true">ออกจากระบบ</a>
     </div>
-    <div>
-    </div>
-    <a href="/logout" class="btn btn-outline-secondary mx-3 active" role="button" aria-pressed="true">ออกจากระบบ</a>
   </nav>
 
   <div class="container">

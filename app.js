@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const readBody = express.urlencoded({ extended: false })
+
 const cookieP = require('cookie-parser')
 const readCookie = cookieP()
 
@@ -16,19 +16,23 @@ const source = {
 }
 
 const pool = mysql.createPool(source)
+const readBody = express.urlencoded({ extended: false })
 
 let cookieValid = [ ]
-let model = { }		
+let model = { }	
+let staffResult =  { }	
 
 app.listen(5000, showStatus)
 app.engine('html', ejs.renderFile)
 
+
+app.get(['/', '/dashboad'], homePage)
 app.get('/checklist', readCookie, checkList)
-app.post('/checklist', readBody, readCookie, saveNewList)
+app.post('/checklist',readCookie, readBody, saveNewList)
 
 app.get('/query-staff', readCookie, showPool)
 
-app.get('/insert', insert)
+app.get('/insert', showInsert)
 app.post('/insert', readBody,  testInert)
 
 app.get('/register', showRegister)
@@ -36,6 +40,8 @@ app.post('/register', readBody, saveRegister)
 
 app.get('/login', showLogin)
 app.post('/login', readBody, checkLogin)
+
+app.get('/profile', showProfile)
 
 app.get('/logout', readCookie, gotoLogout)
 
@@ -45,8 +51,15 @@ app.use(express.static('public'))
 app.use(express.static('photo'))
 
 function showStatus() {
-	let data = new Date()
-	console.log(`>>>Server is started... ${data}`)
+	let date = new Date()
+	console.log(`>: Server is started. ${date} `)
+}
+
+function homePage(req, res) {
+	res.render('index.html')
+	// res.send(model.all) 
+	//model.all >> [{"id":7,"tvb":"tvb002","name":"lisa","position":"store","password":""}]
+	//model {"all":[{"id":7,"tvb":"tvb002","name":"lisa","position":"store","password":""}],"_locals":{}}
 }
 
 function checkList(req, res) {
@@ -55,19 +68,17 @@ function checkList(req, res) {
 		card = req.cookies.card
 	}
 	if( cookieValid[card] ) {
-		res.render('check.html')
+		//แนบข้อมูลใน model.tvb model.name 
+		res.render('check.html', model) 
 	} else {
 		res.redirect('/login')
 	}
 }
 
- function saveNewList(req, res) {
+function saveNewList(req, res) {
 	//add data to database
-	let id = 3
-	let data = ''
-	let staff_id = 2
-	let sql = 'INSERT INTO report SET id = ?, data = ?, staff_id = ?';
-
+	let sql = 'INSERT INTO REPORT (data, staff_id) values (?, ?)'
+	let data_ = ""
 	let result = [
 		req.body.inputGroup1, req.body.btnRadio1, req.body.btnRadio2,
 		req.body.selected1, req.body.selected2, req.body.selected3,
@@ -82,20 +93,23 @@ function checkList(req, res) {
 		req.body.btnRadio24, req.body.btnRadio25, req.body.btnRadio26,
 		req.body.btnRadio27, req.body.btnRadio28, req.body.inputGroup2,
 	]
-	for (let i in result){
-		data += result[i]
+	for ( let i in result) {
+		data_ = data_ + '-' + result[i]
 	}
-	  pool.query(sql,[3, 'sdfsfsdfsdfsdf', 2] , (err, i) => {
-		let model = {};
+
+	let m = model.all
+	let staff_	= m.find( x => x.id )
+
+	let data = [data_, Number(staff_.id)]
+	pool.query(sql, data, (err) => {
 		if(err == null){
-			res.send(data);
-			console.log('OK: ',data)
+			//res.send(data);
+			res.render('profile.html', model)
+			console.log('OK: insert data success...')
 		}else {
-			console.log('err: ',data)
-			model.message = 'Fail....';
+			console.log('err: ',err)
 		}
 	 })
-	 //res.send(data);
 }
 
 function showPool(req, res){
@@ -105,27 +119,31 @@ function showPool(req, res){
 	} 
 	if( cookieValid[card] ){
 		pool.query(`SELECT * FROM staff`, (err, data) => {
-			let model = {};
-			model.all = data;
+			
 			res.send(data);
 		})
 	} else {
 		res.send('Access Permission')
 	}
 }
-function insert(req, res){
+
+function showInsert(req, res){
 	res.render('test.html')
 }
-function testInert(req, res){
-	//let sql = 'INSERT INTO report SET id = ?, data = ?, staff_id = ?';
-	let sql = `INSERT INTO report(id, data, staff_id) VALUES (?,?,?)`
-	let resource = [req.body.id, req.body.data, req.body.staff_id]
 
-	pool.query(sql, resource, (err, d) => {
-		if(err == null){
-			res.send(data)
+function testInert(req, res){
+	let sql = 'INSERT INTO REPORT (data, staff_id) values (?, ?)'
+	let add = [req.body.data, Number(req.body.staff_id)]
+
+	 pool.query(sql, add, (err) => {
+		if(err == null){ 
+			res.send('Success')
+			console.log('insert done!!') 
 		}
-			res.send('error: ', err)
+		else { 
+			res.send(err) 
+			console.log('err>>',err) 
+		}
 	})
 }
 
@@ -134,13 +152,11 @@ function showRegister(req, res){
 }
 
 async function saveRegister(req, res){
-	
 	let sql = 'insert into staff (tvb,name,position,password) values (?,?,?,sha2(?,512))'
 	let data = [req.body.tvb, req.body.name, req.body.position, req.body.password]
-	
-	await pool.query(sql, data,(error, role) => {
+	await pool.query(sql, data,(error) => {
 		if(error == null){
-			console.log('Register success...')
+			console.log('Register is success...')
 		} else {
 			console.log('Register is fail...', error)
 		}
@@ -154,15 +170,15 @@ function showLogin(req, res){
 
 function checkLogin(req, res){
 	let sql = `SELECT * FROM staff WHERE tvb=? AND password=sha2(?,512)`
-	let data = [ req.body.tvb, req.body.password ]
-
-	pool.query(sql, data, function (err, result) {
+	let data = [ req.body.tvb, req.body.password ]	
+	pool.query( sql, data,  ( err, result ) => {
+		staffResult = result
 		model.all = result
-		if (result.length == 1) {
+		if ( result.length == 1 ) {
 			let card = generateKey()
-			cookieValid[card] = result[0]
-			res.header('Set-Cookie', 'card='+card+';HttpOnly') //Server send card-id cookie
-			res.render('check.html', model)
+			cookieValid[ card ] = result[0]
+			res.header( 'Set-Cookie', 'card='+card ) 
+			res.render( 'check.html', model ) 
 		} else {
 			console.error(err)
 			res.redirect('/login')
@@ -184,5 +200,10 @@ function generateKey(){
 function gotoLogout(req, res){
 	let card = req.cookies.card
 	cookieValid[card] = null //ลบcard cookie
+	model = {}
 	res.render('logout.html')
+}
+
+function showProfile(req, res){
+	res.render('profile.html', model)
 }

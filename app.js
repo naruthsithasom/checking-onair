@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-
+const fs = require('fs')
 const cookieP = require('cookie-parser')
 const readCookie = cookieP()
 
@@ -8,6 +8,7 @@ const ejs = require('ejs')
 const cors = require('cors')
 
 const mysql = require('mysql')
+
 const source = {
     host: 'localhost',
     database: 'checklist',
@@ -20,6 +21,8 @@ const readBody = express.urlencoded({ extended: false })
 
 let cookieValid = []
 let model = {}
+
+let resource = [ ]
 
 app.listen(5000, showStatus)
 app.engine('html', ejs.renderFile)
@@ -40,25 +43,23 @@ app.get('/profile', readCookie, showProfile)
 
 app.get('/logout', readCookie, gotoLogout)
 
+app.get('/list', testProfile)
+
 app.use(cors())
 app.use(express.json())
 app.use(express.static('public'))
 app.use(express.static('photo'))
+app.use(express.static('reports'))
 app.use((req, res) => { res.status(404).render('error.html') })
 
 function testProfile(req, res){
-    let outHtml = `<table>
-                    <tr>
-                        <th>ลำดับ</th>
-                        <th>รายงาน</th>
-                        <th>วันลงบันทึก</th>
-                     </tr>
-                     <tr>
-                        <td></td>   
-                        <td></td>   
-                        <td></td>   
-                       </tr>`
-    res.render('profile.html',outHtml)
+    let t = { }
+
+    t.report = resource
+    console.log(t.report)
+    //let Obj =  JSON.stringify(t.report)
+    //fs.writeFileSync('reports/rp01.json', Obj)
+    //res.redirect('/login')
 }
 
 function showStatus() {
@@ -115,7 +116,25 @@ function saveNewList(req, res) {
         req.body.btnRadio24, req.body.btnRadio25, req.body.btnRadio26,
         req.body.btnRadio27, req.body.btnRadio28, req.body.inputGroup2,
     ]
-    //let a = 'ระดับความดัง(-ULFS) : '
+    let r = {}
+    resource = [...result]
+    r.list = resource
+    const save =  JSON.stringify(r)
+
+    const tvb = model.user.map( x => x.tvb)
+    
+    let dmy = ''
+    let t = new Date();
+    let time = t.toDateString()
+
+    for( i=0; i<time.length; i++ ) {
+        if(time.charAt(i) === ' ') continue;
+            dmy += time.charAt(i)
+        }  
+    const dir = `/reports/${tvb}-${dmy}.json`
+    
+    fs.writeFileSync('reports/'+ tvb + dmy.toLocaleLowerCase() +'.json', save)
+    
     for (let i in result) { 
         data_ = data_ + '-' + result[i] 
     }

@@ -20,7 +20,7 @@
         display: flex !important;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     /*     
@@ -34,7 +34,7 @@
     .item {
         width: 200px;
         height: 200px;
-        margin: 10px;
+        margin: auto;
         border: 1px solid grey;
     }
 </style>
@@ -98,7 +98,7 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 mt-4 px-4">
                 <!-- <h3>ผลรายงานประจำวัน</h3> -->
                 <div class="wrap-dashboard">
-                    <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <div class="card text-white bg-info mb-3" style="max-width: 18rem; width: 400px;">
                         <div class="card-header">Check</div>
                         <div class="card-body">
                             <a href="/checklist" class="text-white ">
@@ -107,7 +107,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                    <div class="card text-white bg-success mb-3" style="max-width: 18rem; width: 400px;">
                         <div class="card-header">Report</div>
                         <div class="card-body">
                             <a href="/dashboard" class="text-white">
@@ -119,7 +119,7 @@
                     <div class="card text-white bg-primary mb-3 " style="max-width: 18rem; width: 400px;">
                         <div class="card-header">Staff</div>
                         <div class="card-body">
-                            <a href="/result" class="text-white">
+                            <a href="/profile" class="text-white">
                                 <h5 class="card-title">ข้อมูลเจ้าหน้าที่</h5>
                                 <p class="card-text"></p>
                             </a>
@@ -130,26 +130,28 @@
                     <table class="table table-striped table-sm">
                       <thead>
                         <tr>
-                          <th>ลำดับ</th>
                           <th>รายงาน</th>
                           <th>เวลาบันทึก</th>
-                          <th>ผู้ลงบันทึก</th>
+                          <th>ผู้ลง</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <% report.map( x=> { %>
-                            <th scope="row" class="text-center">
-                              <%= x.id %>
-                            </th>
+                          <% dashboard.map( x=> { %>
                             <td>
-                              <%= x.data %>
+                              <a href='/>'>
+                                  <% const json = x.data %>
+                                  <% const obj = JSON.parse(json) %>
+                                  <%= obj.code35 %>         
+                              </a>
                             </td>
                             <td>
-                              <%= x.date_times %>
+                              <% let filter = JSON.stringify(x.date_times) %>
+                              <% let time = filter.slice(2, 20) %>
+                              <%= time %>
                             </td>
                             <td>
-                                <%= x.staff_id %>
+                                   <%= x.name %>
                               </td>
                         </tr>
                         <% }) %>
